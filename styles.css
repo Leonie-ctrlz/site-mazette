@@ -1,0 +1,782 @@
+
+/* =====================
+   VARIABLES GLOBALES
+===================== */
+:root {
+  --couleur-fond: #0a0a0a;        /* Noir profond */
+  --couleur-texte: #e8e4dc;           /* Blanc cassé : #e8e4dc */
+  --couleur-accent: #c9a84c;          /* Doré ciné : #c9a84c */
+  --couleur-secondaire: #4e4e4e;  /* Gris très sombre */
+  --couleur-tertiaire: #488e97;
+  --police-titre: 'Cormorant Garamond', serif;  /* Élégant */
+  --police-texte: 'Inter', sans-serif;            
+}
+
+/* =====================
+   RESET DE BASE
+===================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--couleur-fond);
+  background-image: url("fond2.jpg");
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: var(--police-texte);
+  line-height: 1.7;
+  color: var(--couleur-texte); 
+  overflow-x: hidden;
+}
+
+
+/* =====================
+   TYPOGRAPHIE
+===================== */
+h1 {
+  font-family: var(--police-titre);
+  font-size: clamp(3rem, 10vw, 8rem); /* clamp : min, préféré, max */
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  color: var(--couleur-accent);
+  animation: apparition 1.2s ease forwards; 
+}
+h1~p{
+  color: var(--couleur-texte);
+}
+
+h2 {
+  font-family: var(--police-titre);
+  font-size: 3rem;       
+  font-weight: 900;
+  color: var(--couleur-accent);
+  margin-bottom: 2rem;
+}
+
+h3 {
+  font-family: var(--police-titre);
+  font-size: 2rem;       
+  font-weight: 400;
+  color: var(--couleur-texte);
+  margin-bottom: 2rem;
+}
+
+h2~p{
+  color: var(--couleur-texte);
+  opacity: 1;
+
+}
+
+h3~p{
+  color: var(--couleur-texte);
+  opacity: 1;
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  font-weight: 400;
+
+}
+
+h2~h3{
+  color:rgb(241, 230, 204);
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: underline;
+  text-decoration-color: var(--couleur-accent);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+  text-align: center;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+blockquote{
+  color: var(--couleur-texte);
+
+}
+
+
+/* =====================
+   NAVIGATION
+===================== */
+nav {
+  position: fixed;   
+  top: 0;
+  width: 100%;
+  padding: 1.5rem 3rem;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 100;
+  background: linear-gradient(to bottom, #0a0a0aCC, transparent);
+}
+
+nav ul {
+  list-style: none;   
+  display: flex;
+  gap: 1rem;    
+}
+
+nav a {
+  color: var(--couleur-texte);
+  text-decoration: none; 
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+nav a:hover {
+  color: var(--couleur-accent); 
+}
+
+/* =====================
+   HERO
+===================== */
+#accueil {
+  height: 100vh;  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;       
+  text-align: center;
+  padding: 2rem;
+}
+
+/* =====================
+   ANIMATION : FADE-IN
+===================== */
+@keyframes apparition {
+  from {
+    opacity: 0;  
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+ 
+#accueil p {
+  animation: apparition 1.2s ease forwards;
+  animation-delay: 0.4s; 
+}
+
+
+/* =====================
+   SECTIONS GÉNÉRALES
+===================== */
+section {
+  padding: 5rem;   
+  max-width: 1100px;
+  margin: auto; 
+}
+
+/* =====================
+   BIO / MUSIQUE
+===================== */
+#bio p {
+  font-size: 1.5rem;
+  max-width: 900px; 
+  opacity: 0.85;
+  line-height: 1.9;
+}
+
+#musique p {
+  font-size: 1.5rem;
+  max-width: 900px;    
+  opacity: 0.85;
+  line-height: 1.9;
+}
+/* =====================
+   CITATION PRESSE
+===================== */
+#bio blockquote {
+  margin-top: 3rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--couleur-accent);
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  font-style: italic;
+  opacity: 0.9;
+}
+#musique blockquote{
+  margin-top: 3rem;
+  padding-left: 1.5rem;
+  border-left: 3px solid var(--couleur-accent);
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  font-style: italic; 
+  opacity: 0.9;
+}
+
+
+/* =====================
+   LECTEUR A NEW ERA
+===================== */
+#lecteur-anewera {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  background-color: var(--couleur-tertiaire);
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 2rem;
+  max-width: 900px; 
+}
+
+#lecteur-pochette img {
+  width: 500px;       
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 2px;
+}
+
+#lecteur-contenu {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#lecteur-entete {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+#numero-piste {
+  font-size: 1rem;
+  opacity: 0.7;
+  font-family: var(--police-titre);
+}
+
+#nom-piste {
+  font-family: var(--police-titre);
+  font-size: 1.7rem;
+  color: var(--couleur-accent);
+}
+
+/* Barre de progression */
+#barre-container {
+  width: 100%;
+  height: 3px;
+  background: #bdbcbc;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+#barre-progression {
+  height: 100%;
+  width: 0%;
+  background: var(--couleur-accent);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+/* Temps */
+#lecteur-temps {
+  display: flex;
+  justify-content: space-between; 
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+/* Boutons */
+#lecteur-boutons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#lecteur-boutons button {
+  background: none;
+  border: 1px solid var(--couleur-accent);
+  color: var(--couleur-accent);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#lecteur-boutons button:hover {
+  background: var(--couleur-accent);
+  color: black;    
+}
+
+/* Tracklist */
+#tracklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.5rem;
+}
+
+#tracklist li {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  border-bottom: 1px solid #c4c2c2;
+  transition: opacity 0.4s ease, color 0.4s ease;
+  display: flex;
+  gap: 0.8rem;
+}
+
+#tracklist li:hover {
+  opacity: 1;
+  color: var(--couleur-accent);
+}
+
+#tracklist li.active {
+  opacity: 1;
+  color: var(--couleur-accent);
+}
+
+
+/* =====================
+   DISCOGRAPHIE — GRILLE
+===================== */
+.grille-disques {
+  display: grid;    
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.carte-album {
+  background-color: var(--couleur-secondaire);
+  border: 2px solid #2a2a2a;
+  border-radius: 2px;
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;     
+  padding: 0;      
+}
+
+.carte-album:hover {
+  transform: translateY(-6px);              /* Légèrement vers le haut */
+  border-color: var(--couleur-accent);
+}
+
+.carte-album h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1.5rem;
+  color: var(--couleur-accent);
+  margin-bottom: 0.2rem;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}
+
+.carte-album span {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 1rem;
+  color: var(--couleur-texte);
+  opacity: 0.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.carte-album a {
+  text-decoration: none;
+  color: inherit;  
+  display: block; 
+}
+
+.carte-album a:visited{
+  border-color:darkcyan;
+}
+
+.carte-album img {
+  width: 100%;   
+  aspect-ratio: 1 / 1; /* Carré parfait, comme une pochette */
+  object-fit: cover; 
+  display: block;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+}
+
+.carte-album .infos {
+  padding: 1rem;
+}
+
+
+/* =====================
+   GALERIE— GRILLE
+===================== */
+.grille-photos {
+  display: grid;       
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;     
+}
+
+.grille-photos img{
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display:block;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  border: 3px solid #2a2a2a;
+  border-radius: 2px;
+  filter: grayscale(30%);
+  transition: transform 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;    
+  padding: 0; 
+}
+.grille-photos img:hover {
+   filter: grayscale(0%);
+  transform: scale(1.02);
+}
+/* =====================
+   LIGHTBOX
+===================== */
+#lightbox {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 500;
+  transition: opacity 0.3s ease;
+  opacity: 1;
+}
+
+#lightbox.lightbox-cachee {
+ display: none;
+}
+
+#lightbox-img {
+  max-width: 85vw; 
+  max-height: 85vh; 
+  object-fit: contain; 
+  border-radius: 2px;
+}
+
+/* Bouton fermer */
+#lightbox-fermer {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: 1px solid var(--couleur-accent);
+  color: var(--couleur-accent);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+/* Boutons précédent / suivant */
+#lightbox-precedent,
+#lightbox-suivant {
+  background: none;
+  border: none;
+  color: var(--couleur-texte);
+  font-size: 4rem;
+  cursor: pointer;
+  padding: 1rem;
+  opacity: 0.6;
+  transition: opacity 0.2s ease;
+  user-select: none;
+}
+
+#lightbox-precedent:hover,
+#lightbox-suivant:hover,
+#lightbox-fermer:hover {
+  opacity: 1;
+  background: none;
+}
+
+#lightbox-fermer:hover {
+  background: var(--couleur-accent);
+  color: black;
+}
+
+
+/* =====================
+   VIDEO
+===================== */
+.grille-video {
+  display: grid;       
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem; 
+      
+}
+
+.carte-video {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+
+.carte-video iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid #2a2a2a;
+}
+
+.carte-video:hover iframe {
+  border-color: var(--couleur-accent);
+  transition: border-color 0.3s ease;
+}
+
+.carte-video video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 4px;
+  border: 1px solid #2a2a2a;
+}
+
+.legende-video {
+  font-family: var(--police-titre);
+  font-size: 1rem;
+  opacity: 0.7;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* =====================
+   TIMELINE
+===================== */
+
+#dates{
+    max-width:900px;
+    margin:auto;
+}
+
+.timeline{
+    position:relative;
+    margin-top:1rem;
+    padding-left:40px;
+}
+
+.timeline::before{
+    content:"";
+    position: absolute;
+    left:10px;
+    top:0;
+    bottom:0;
+    width:3px;
+    background:var(--couleur-accent);
+}
+
+.evenement{
+    position:relative;
+    margin-bottom:2rem;
+}
+
+.evenement::before{
+    content:"";
+    position:absolute;
+    left:-49px;
+    top:8px;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:var(--couleur-accent);
+    box-shadow:0 0 10px rgba(201,168,76,.6);
+}
+
+.annee{
+    font-family:var(--police-titre);
+    color:var(--couleur-accent);
+    font-size:2rem;
+    font-weight: 700;
+    margin-bottom:.2rem;
+}
+
+.contenu{
+    background-color: var(--couleur-tertiaire);
+    border:3px solid var(--couleur-accent);
+    opacity: 0.8;
+    padding:1.2rem 1.5rem;
+    transition:.3s;
+}
+
+.contenu:hover{
+    transform:translateX(8px);
+    background:#181818;
+}
+
+.contenu h3{
+    font-size:2rem;
+    font-weight: 700;
+    color:var(--couleur-accent);
+    margin-bottom:.4rem;
+}
+
+.contenu p{
+    color:var(--couleur-texte);
+    opacity:.8;
+}
+
+
+/* =====================
+   CONTACT
+===================== */
+#contact p {
+  opacity: 0.7;
+  margin-bottom: 3rem;
+  font-size: 1.1rem;
+}
+
+/* Réseaux sociaux */
+#reseaux {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.lien-reseau {
+  text-decoration: none;
+  color: var(--couleur-accent);
+  border: 2px solid var(--couleur-accent);
+  background-color: var(--couleur-tertiaire);
+  padding: 0.5rem 1.2rem;
+  border-radius: 2px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.lien-reseau:hover {
+  background: var(--couleur-accent);
+  color: var(--couleur-fond); 
+}
+
+/* Formulaire */
+#form-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+}
+
+.champ {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.champ label {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.6;
+}
+
+.champ input,
+.champ select,
+.champ textarea {
+  background: var(--couleur-secondaire);
+  border: 2px solid #3a3a3a;
+  color: var(--couleur-texte);
+  padding: 0.8rem 1rem;
+  border-radius: 2px;
+  font-family: var(--police-texte);
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  outline: none;
+}
+
+.champ input:focus,
+.champ select:focus,
+.champ textarea:focus {
+  border-color: var(--couleur-accent); 
+}
+
+.champ textarea {
+  resize: vertical;   
+}
+
+#btn-envoyer {
+  align-self: flex-start; 
+  background: var(--couleur-accent);
+  color: #000;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  padding: 0.9rem 1rem;
+  font-family: var(--police-texte);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: opacity 0.3s ease;
+}
+
+#btn-envoyer:hover {
+  opacity: 0.85;
+  background-color: var(--couleur-tertiaire);
+  color: var(--couleur-accent);
+  border-color: #000;
+}
+
+#message-formulaire{
+  margin-top:20px;
+  text-align:center;
+  font-size:1rem;
+  font-weight:600;
+  display: none;
+}
+
+.success{
+
+  color:#5bc75b;
+}
+
+.error{
+
+  color:#ff5d5d;
+}
+
+
+/* =====================
+   ANIMATIONS AU SCROLL
+===================== */
+
+/* État initial : invisible et décalé vers le bas */
+.apparait {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+/* État final : visible — ajouté par JS quand l'élément entre à l'écran */
+.apparait.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Délais en cascade pour les grilles */
+.apparait:nth-child(2) { transition-delay: 0.1s; }
+.apparait:nth-child(3) { transition-delay: 0.2s; }
+.apparait:nth-child(4) { transition-delay: 0.3s; }
+.apparait:nth-child(5) { transition-delay: 0.4s; }
+.apparait:nth-child(6) { transition-delay: 0.5s; }
+.apparait:nth-child(7) { transition-delay: 0.6s; }
