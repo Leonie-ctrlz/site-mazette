@@ -858,4 +858,16 @@ section {
   #reseaux {
     justify-content: center;
   }
+
+  /* Désactive les animations au scroll sur mobile */
+  .apparait {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    transition: none !important;
+  }
+
+  .apparait.visible {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+  }
 }
