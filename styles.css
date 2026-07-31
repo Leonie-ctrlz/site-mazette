@@ -780,3 +780,82 @@ section {
 .apparait:nth-child(5) { transition-delay: 0.4s; }
 .apparait:nth-child(6) { transition-delay: 0.5s; }
 .apparait:nth-child(7) { transition-delay: 0.6s; }
+
+
+/* =====================
+   RESPONSIVE MOBILE
+===================== */
+@media (max-width: 768px) {
+
+  /* --- NAVIGATION --- */
+  nav {
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  nav a {
+    font-size: 0.7rem; 
+    letter-spacing: 0.08em;
+  }
+
+  /* --- HERO --- */
+  #accueil {
+    padding: 1rem;
+  }
+
+  /* --- SECTIONS GÉNÉRALES --- */
+  section {
+    padding: 3rem 1.5rem;
+  }
+
+  /* --- LECTEUR AUDIO --- */
+  #lecteur-anewera {
+    flex-direction: column; 
+    padding: 1rem;
+  }
+
+  #lecteur-pochette img {
+    width: 100%; 
+    max-width: 300px;
+    margin: 0 auto;
+  }
+
+  /* --- GALERIE PHOTOS --- */
+  .grille-photos {
+    grid-template-columns: 1fr; 
+  }
+
+  .grille-photos img {
+    margin-bottom: 0;
+  }
+
+  /* --- DISCOGRAPHIE --- */
+  .grille-disques {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  /* --- VIDÉOS --- */
+  .grille-video {
+    grid-template-columns: 1fr;
+  }
+
+  /* --- TIMELINE --- */
+  .timeline {
+    padding-left: 25px;
+  }
+
+  .contenu h3 {
+    font-size: 1.2rem;
+  }
+
+  /* --- CONTACT --- */
+  #reseaux {
+    justify-content: center;
+  }
+}
