@@ -2,14 +2,14 @@
 // 1. LES PISTES DE L'EP
 // =====================
 const pistes = [
-  { numero: "01", titre: "Story",                 fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/1%20-%20Story%20-%20Mazette.wav" },
-  { numero: "02", titre: "All Sens",              fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/2%20-%20All%20Sens%20-%20Mazette.wav" },
-  { numero: "03", titre: "L'or du commun",        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/3%20-%20L%27or%20du%20commun%20-%20Mazette.wav" },
-  { numero: "04", titre: "Shan",                  fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/4%20-%20Shan%20-%20Mazette.wav" },
-  { numero: "05", titre: "A New Era",             fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/5%20-%20A%20new%20era%20-%20Mazette.wav" },
-  { numero: "06", titre: "Silent",                fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/6%20-%20Silent%20-%20Mazette.wav" },
-  { numero: "07", titre: "La symphonie de l'eau", fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/7%20-%20La%20symphonie%20de%20l%27eau%20-%20Mazette.wav" },
-  { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/8%20-%20Contre%20ton%20%C3%A9paule%20-%20Mazette.wav" },
+  { numero: "01", titre: "Story",                 fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628334/1_-_Story_-_Mazette.wav" },
+  { numero: "02", titre: "All Sens",              fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/2_-_All_Sens_-_Mazette.wav" },
+  { numero: "03", titre: "L'or du commun",        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628339/3_-_L_or_du_commun_-_Mazette.wav" },
+  { numero: "04", titre: "Shan",                  fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/4_-_Shan_-_Mazette.wav" },
+  { numero: "05", titre: "A New Era",             fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/5_-_A_new_era_-_Mazette.wav" },
+  { numero: "06", titre: "Silent",                fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628336/6_-_Silent_-_Mazette.wav" },
+  { numero: "07", titre: "La symphonie de l'eau", fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628332/7_-_La_symphonie_de_l_eau_-_Mazette.wav" },
+  { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/8_-_Contre_ton_%C3%A9paule_-_Mazette.wav" },
 ];
 
 // =====================

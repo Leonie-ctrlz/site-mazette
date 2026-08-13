@@ -23,7 +23,7 @@
 
 body {
   background-color: var(--couleur-fond);
-  background-image: url("fond2.jpg");
+  background-image: url("https://res.cloudinary.com/jyllfp1b/image/upload/fond2.jpg");
   background-size: cover;
   background-position: center 20%;
   background-repeat: no-repeat;
