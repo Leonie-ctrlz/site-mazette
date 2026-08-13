@@ -9,7 +9,7 @@ const pistes = [
   { numero: "05", titre: "A New Era",             fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/5_-_A_new_era_-_Mazette.wav" },
   { numero: "06", titre: "Silent",                fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628336/6_-_Silent_-_Mazette.wav" },
   { numero: "07", titre: "La symphonie de l'eau", fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628332/7_-_La_symphonie_de_l_eau_-_Mazette.wav" },
-  { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/8_-_Contre_ton_%C3%A9paule_-_Mazette.wav" },
+  { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/8_-_Contre_ton_épaule_-_Mazette.wav" },
 ];
 
 // =====================
