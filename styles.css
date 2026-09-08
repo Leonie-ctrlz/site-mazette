@@ -213,31 +213,6 @@ section {
   opacity: 0.9;
 }
 
-/* Scrollbar du textarea */
-#message::-webkit-scrollbar {
-  width: 12px; 
-}
-
-#message::-webkit-scrollbar-track {
-  background: var(--couleur-secondaire);
-}
-
-#message::-webkit-scrollbar-thumb {
-  background: var(--couleur-tertiaire);
-  border: 2px solid var(--couleur-accent);
-  border-radius: 0px;
-}
-
-#message::-webkit-scrollbar-thumb:hover {
-  background: var(--couleur-accent);
-}
-
-/* Coin de redimensionnement du textarea */
-#message::-webkit-resizer {
-  background-color: var(--couleur-tertiaire);
-  border: 2px solid var(--couleur-accent);
-  border-radius: 0px;
-}
 
 /* =====================
    LECTEUR A NEW ERA
@@ -738,6 +713,47 @@ section {
 
 .champ textarea {
   resize: vertical;   
+}
+
+/* Scrollbar du textarea */
+#message::-webkit-scrollbar {
+  width: 12px; 
+}
+
+#message::-webkit-scrollbar-track {
+  background: var(--couleur-secondaire);
+}
+
+#message::-webkit-scrollbar-thumb {
+  background: var(--couleur-tertiaire);
+  border: 2px solid var(--couleur-accent);
+  border-radius: 0px;
+}
+
+#message::-webkit-scrollbar-thumb:hover {
+  background: var(--couleur-accent);
+}
+
+/* Coin de redimensionnement du textarea */
+#message::-webkit-resizer {
+  background-color: var(--couleur-tertiaire);
+  border: 2px solid var(--couleur-accent);
+  border-radius: 0px;
+}
+
+/* Cacher le resizer par défaut */
+#message {
+  resize: none;  /* ← désactive le redimensionnement de base */
+}
+
+/* Afficher le resizer seulement quand la classe est active */
+#message.resizable {
+  resize: vertical;
+}
+
+#message.resizable::-webkit-resizer {
+  background-color: var(--couleur-tertiaire);
+  border: 2px solid var(--couleur-accent);
 }
 
 #btn-envoyer {

@@ -234,6 +234,20 @@ form.addEventListener("submit", async function(e) {
 
 
 // =====================
+// RESIZER TEXTAREA
+// =====================
+const textarea = document.getElementById("message");
+
+textarea.addEventListener("input", function() {
+  // Vérifie si le contenu dépasse la hauteur visible
+  if (textarea.scrollHeight > textarea.clientHeight) {
+    textarea.classList.add("resizable");
+  } else {
+    textarea.classList.remove("resizable");
+  }
+});
+
+// =====================
 // ANIMATIONS AU SCROLL
 // =====================
 document.querySelectorAll(
