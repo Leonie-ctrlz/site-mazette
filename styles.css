@@ -34,6 +34,10 @@ body {
   overflow-x: hidden;
 }
 
+footer {
+  position: relative;
+  z-index: 1;
+}
 
 /* =====================
    TYPOGRAPHIE
@@ -103,8 +107,8 @@ blockquote{
 /* =====================
    NAVIGATION
 ===================== */
-nav {
-  position: fixed;   
+body > nav {
+  position: fixed;
   top: 0;
   width: 100%;
   padding: 1.5rem 3rem;
@@ -911,4 +915,101 @@ section {
     opacity: 1 !important;
     transform: translateY(0) !important;
   }
+}
+
+
+/* =====================
+   FOOTER
+===================== */
+footer {
+  text-align: center;
+  padding: 2rem;
+  border-top: 1px solid #1a1a1a;
+  font-size: 0.85rem;
+  opacity: 0.5;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  background-color: var(--couleur-fond);
+}
+
+.footer-nav {
+  position: static;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 0.8rem;
+  list-style: none;
+}
+
+.footer-nav a {
+  color: var(--couleur-accent);
+  text-decoration: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: opacity 0.3s ease;
+}
+
+.footer-nav a:hover {
+  opacity: 0.7;
+}
+
+
+/* =====================
+   MENTIONS LÉGALES
+===================== */
+#mentions {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 6rem 2rem 6rem;
+}
+
+#mentions h1 {
+  font-family: var(--police-titre);
+  font-size: 3rem;
+  color: var(--couleur-accent);
+  margin-bottom: 3rem;
+  animation: none;
+}
+
+.mention-bloc {
+  margin-bottom: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid #1a1a1a;
+}
+
+.mention-bloc h2 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.mention-bloc p {
+  opacity: 0.75;
+  line-height: 1.8;
+  margin-bottom: 0.8rem;
+}
+
+.mention-bloc a {
+  color: var(--couleur-accent);
+  text-decoration: none;
+}
+
+.retour-accueil {
+  display: inline-block;
+  margin-top: 2rem;
+  color: var(--couleur-accent);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  transition: opacity 0.3s ease;
+}
+
+.retour-accueil:hover {
+  opacity: 0.7;
+}
+
+html {
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
 }
