@@ -1,0 +1,476 @@
+/* =====================
+   VARIABLES GLOBALES
+===================== */
+:root {
+    --couleur-fond: #0a0a0a;        /* Noir profond */
+    --couleur-texte: #e8e4dc;           /* Blanc cassé : #e8e4dc */
+    --couleur-accent: #c9a84c;          /* Doré ciné : #c9a84c */
+    --couleur-secondaire: #4e4e4e;  /* Gris très sombre */
+    --couleur-third: #edab6a;
+    --couleur-tertiaire: #488e97;
+    --police-titre: 'Cormorant Garamond', serif;  /* Élégant */
+    --police-texte: 'Inter', sans-serif;
+}
+
+
+/* =====================
+   RESET DE BASE
+===================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* =====================
+   MENU HAMBURGER
+===================== */
+
+/* Bouton hamburger */
+#menu-btn {
+    position: fixed;
+    top: 1.5rem;
+    right: 2rem;
+    z-index: 200;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0.5rem;
+}
+
+/* Les 3 barres */
+#menu-btn span {
+    display: block;
+    width: 28px;
+    height: 2px;
+    background: var(--couleur-texte);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+#menu-btn:hover span {
+    background: var(--couleur-accent);
+}
+
+/* Menu latéral */
+#menu-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 280px;
+    height: 100%;
+    background: #080808;
+    border-left: 1px solid #1a1a1a;
+    z-index: 300;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 3rem 2.5rem;
+    transform: translateX(0);
+    transition: transform 0.4s ease;
+}
+
+/* Menu fermé */
+#menu-lateral.menu-ferme {
+    transform: translateX(100%);
+}
+
+/* Bouton fermer */
+#menu-fermer {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    color: var(--couleur-texte);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+#menu-fermer:hover {
+    color: var(--couleur-accent);
+}
+
+/* Liens du menu */
+#menu-lateral ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#menu-lateral a {
+    font-family: var(--police-titre), serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--couleur-texte);
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    transition: color 0.3s ease, transform 0.3s ease;
+    display: inline-block;
+}
+
+#menu-lateral a:hover {
+    color: var(--couleur-accent);
+    transform: translateX(8px);
+}
+
+/* Fond sombre derrière le menu */
+#menu-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 200;
+    transition: opacity 0.4s ease;
+    opacity: 1;
+}
+
+#menu-overlay.menu-ferme {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* =====================
+   HERO-IMAGE
+===================== */
+/* Override du fond de page — même image mais plus sombre */
+body.page-image {
+    background-image: url("https://res.cloudinary.com/jyllfp1b/image/upload/v1786628283/fond2.jpg");
+    background-size: cover;
+    background-position: center 20%;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-color: #050505;
+}
+
+/* Filtre noir opaque par-dessus — effet film noir */
+body.page-image::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 0;
+    pointer-events: none;
+}
+
+body.page-image nav,
+body.page-image main,
+body.page-image section,
+body.page-image footer {
+    position: relative;
+    z-index: 1;
+}
+
+#hero-titre {
+    font-family: var(--police-titre), serif;
+    font-size: clamp(4rem, 7vw, 4rem); /* plus proche du h2 */
+    font-weight: 800;                      /* même graisse que h2 */
+    letter-spacing: 0.05em;               /* moins espacé que avant */
+    color: var(--couleur-accent);          /* doré */
+    text-align: center;
+    line-height: 1.2;
+    animation: apparition 1s ease forwards;
+    animation-delay: 0.3s;
+    opacity: 0;
+
+    /* Lignes décoratives */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* Ligne au-dessus et en dessous */
+#hero-titre::before,
+#hero-titre::after {
+    content: "";
+    display: block;
+    width: 350px;           /* longueur de la ligne */
+    height: 4px;           /* épaisseur */
+    background: linear-gradient(
+            to right,
+            transparent,
+            var(--couleur-accent),
+            transparent
+    );
+}
+
+
+/* ================================
+   Liens "Découvrir"/"me contacter"
+=================================== */
+/* Bouton "Découvrir" */
+#hero-btn {
+    color: var(--couleur-third);
+}
+
+#hero-btn:hover {
+    opacity: 0.85;
+    color: var(--couleur-accent);
+}
+
+/* Bouton "Me contacter" */
+.btn-contact-image {
+
+    color: var(--couleur-third);
+}
+
+.btn-contact-image:hover {
+    opacity: 0.85;
+    color: var(--couleur-accent);
+}
+
+
+/* =====================
+   MINI LECTEUR
+===================== */
+#mini-lecteur {
+    position: fixed;
+    top: 1rem;          /* ← en haut */
+    left: 1.5rem;       /* ← à gauche */
+    bottom: auto;       /* ← annule le bas */
+    width: auto;        /* ← pas pleine largeur */
+    max-width: 320px;
+    background: rgba(5, 5, 5, 0.92);
+    border: 1px solid var(--couleur-accent);
+    border-radius: 4px;
+    padding: 0.8rem 1.2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    z-index: 150;
+    transition: transform 0.4s ease;
+}
+
+/* Supprime la classe qui le cache au départ */
+#mini-lecteur.mini-cache {
+    transform: translateX(-120%);  /* ← glisse vers la gauche au lieu du bas */
+}
+
+#mini-infos {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+    min-width: 200px;
+}
+
+#mini-numero {
+    font-family: var(--police-titre), serif;
+    font-size: 0.8rem;
+    opacity: 0.5;
+    color: var(--couleur-accent);
+}
+
+#mini-titre {
+    font-family: var(--police-titre), serif;
+    font-size: 1.1rem;
+    color: var(--couleur-accent);
+}
+
+#mini-controls {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+#mini-controls button {
+    background: none;
+    border: 1px solid var(--couleur-accent);
+    color: var(--couleur-accent);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#mini-controls button:hover {
+    background: var(--couleur-accent);
+    color: #000;
+}
+
+#mini-barre-container {
+    flex: 1;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#mini-barre {
+    height: 100%;
+    width: 0;
+    background: var(--couleur-accent);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+
+/* =====================
+   LECTEUR EXTRAITS
+===================== */
+#lecteur-extraits {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    background: rgba(8, 8, 8, 0.8);
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    padding: 2rem;
+    max-width: 800px;
+    transition: border-color 0.3s ease;
+}
+
+#lecteur-extraits:hover {
+    border-color: var(--couleur-accent);
+}
+
+/* Visuel / cover */
+#extraits-visuel {
+    flex-shrink: 0;
+}
+
+#extraits-cover {
+    width: 160px;
+    height: 160px;
+    background: #111;
+    border: 1px solid #2a2a2a;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+}
+
+/* Quand une vraie image est dispo */
+#extraits-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+    filter: grayscale(30%);
+}
+
+#extraits-contenu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+#extraits-entete {
+    display: flex;
+    align-items: baseline;
+    gap: 0.8rem;
+}
+
+#extraits-numero {
+    font-family: var(--police-titre), serif;
+    font-size: 0.8rem;
+    opacity: 0.4;
+    color: var(--couleur-accent);
+}
+
+#extraits-titre {
+    font-family: var(--police-titre), serif;
+    font-size: 1.4rem;
+    color: var(--couleur-accent);
+}
+
+#extraits-ambiance {
+    font-size: 0.85rem !important;
+    opacity: 0.5 !important;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+/* Barre */
+#extraits-barre-container {
+    width: 100%;
+    height: 2px;
+    background: #333;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+#extraits-barre {
+    height: 100%;
+    width: 0;
+    background: var(--couleur-accent);
+    border-radius: 2px;
+    transition: width 0.1s linear;
+}
+
+/* Temps */
+#extraits-temps {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+/* Boutons */
+#extraits-boutons {
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+#extraits-boutons button {
+    background: none;
+    border: 1px solid var(--couleur-accent);
+    color: var(--couleur-accent);
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+#extraits-boutons button:hover {
+    background: var(--couleur-accent);
+    color: #000;
+}
+
+/* Liste extraits */
+#extraits-liste {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    margin-top: 0.5rem;
+}
+
+#extraits-liste li {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    cursor: pointer;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid #1a1a1a;
+    transition: opacity 0.2s ease, color 0.2s ease;
+    display: flex;
+    gap: 0.8rem;
+}
+
+#extraits-liste li:hover,
+#extraits-liste li.active {
+    opacity: 1;
+    color: var(--couleur-accent);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #lecteur-extraits {
+        flex-direction: column;
+    }
+    #extraits-cover {
+        width: 100%;
+        height: 180px;
+    }
+}

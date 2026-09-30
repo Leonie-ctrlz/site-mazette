@@ -272,3 +272,10 @@ const observateur = new IntersectionObserver(
 document.querySelectorAll(".apparait").forEach(function(el) {
   observateur.observe(el);
 });
+
+
+window.addEventListener("beforeunload", function() {
+  localStorage.setItem("mazette-piste", pisteEnCours);
+  localStorage.setItem("mazette-temps", audio.currentTime);
+  localStorage.setItem("mazette-playing", !audio.paused);
+});

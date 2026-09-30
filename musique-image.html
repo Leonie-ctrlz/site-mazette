@@ -12,8 +12,16 @@
 </head>
 <body class="page-image">
 
-<!-- NAVIGATION -->
-<nav>
+<!-- BOUTON HAMBURGER -->
+<button id="menu-btn" aria-label="Ouvrir le menu">
+    <span></span>
+    <span></span>
+    <span></span>
+</button>
+
+<!-- MENU LATÉRAL -->
+<nav id="menu-lateral" class="menu-ferme">
+    <button id="menu-fermer" aria-label="Fermer le menu">✕</button>
     <ul>
         <li><a href="index.html">Accueil</a></li>
         <li><a href="index.html#bio">Bio</a></li>
@@ -21,9 +29,11 @@
         <li><a href="index.html#galerie">Galerie</a></li>
         <li><a href="index.html#live">Live</a></li>
         <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="musique-image.html" class="nav-actif">Musique à l'image</a></li>
     </ul>
 </nav>
+
+<!-- Fond sombre derrière le menu -->
+<div id="menu-overlay" class="menu-ferme"></div>
 
 <!-- HERO PLEIN ÉCRAN -->
 <section id="hero-image">
@@ -33,8 +43,9 @@
     <div id="hero-overlay"></div>
 
     <div id="hero-contenu">
-        <p id="hero-surtitre">MAZETTE</p>
         <h1 id="hero-titre">Musique à l'image</h1>
+        <br>
+        <p id="hero-surtitre">MAZETTE</p>
         <p id="hero-soustitre">Compositeur · Bandes originales · Cinéma & Audiovisuel</p>
         <a href="#apropos-image" id="hero-btn">Découvrir</a>
     </div>
@@ -43,7 +54,56 @@
     <div id="hero-fleche">&#8595;</div>
 
 </section>
+<!-- SECTION EXTRAIT AUDIO/VIDÉO -->
+<section id="extraits">
+    <h2>Extraits exclusifs</h2>
+    <p>Des compositions inédites — créées pour l'image, jamais sorties en album.</p>
 
+    <div id="lecteur-extraits">
+
+        <!-- Pochette / visuel -->
+        <div id="extraits-visuel">
+            <div id="extraits-cover">🎬</div>  <!-- remplacé par une image plus tard -->
+        </div>
+
+        <div id="extraits-contenu">
+
+            <!-- Titre en cours -->
+            <div id="extraits-entete">
+                <span id="extraits-numero">01</span>
+                <span id="extraits-titre">...</span>
+            </div>
+
+            <!-- Description de l'ambiance -->
+            <p id="extraits-ambiance">...</p>
+
+            <!-- Barre de progression -->
+            <div id="extraits-barre-container">
+                <div id="extraits-barre"></div>
+            </div>
+
+            <!-- Temps -->
+            <div id="extraits-temps">
+                <span id="extraits-temps-actuel">0:00</span>
+                <span id="extraits-temps-total">0:00</span>
+            </div>
+
+            <!-- Boutons -->
+            <div id="extraits-boutons">
+                <button id="extraits-precedent">⏮</button>
+                <button id="extraits-play">▶</button>
+                <button id="extraits-suivant">⏭</button>
+            </div>
+
+            <!-- Liste des extraits -->
+            <ul id="extraits-liste"></ul>
+
+        </div>
+    </div>
+
+    <audio id="extraits-audio"></audio>
+
+</section>
 <!-- SECTION À PROPOS -->
 <section id="apropos-image">
     <h2>L'image comme partition</h2>
@@ -87,11 +147,7 @@
     </div>
 </section>
 
-<!-- SECTION EXTRAIT AUDIO/VIDÉO -->
-<section id="extraits">
-    <h2>Extraits</h2>
-    <p class="placeholder-texte">[ Extraits audio ou vidéo à venir ]</p>
-</section>
+
 
 <!-- SECTION CITATION -->
 <section id="citation-image">
@@ -115,5 +171,21 @@
 
 <script src="image.js"></script>
 
+<!-- MINI LECTEUR PERSISTANT -->
+<div id="mini-lecteur" class="mini-cache">
+    <div id="mini-infos">
+        <span id="mini-numero">01</span>
+        <span id="mini-titre">Story</span>
+    </div>
+    <div id="mini-controls">
+        <button id="mini-precedent">⏮</button>
+        <button id="mini-play">▶</button>
+        <button id="mini-suivant">⏭</button>
+    </div>
+    <div id="mini-barre-container">
+        <div id="mini-barre"></div>
+    </div>
+    <audio id="mini-audio"></audio>
+</div>
 </body>
 </html>
