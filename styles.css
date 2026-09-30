@@ -28,7 +28,7 @@ body {
   background-position: center 20%;
   background-repeat: no-repeat;
   background-attachment: fixed;
-  font-family: var(--police-texte);
+  font-family: var(--police-texte), sans-serif;
   line-height: 1.7;
   color: var(--couleur-texte); 
   overflow-x: hidden;
@@ -43,7 +43,7 @@ footer {
    TYPOGRAPHIE
 ===================== */
 h1 {
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: clamp(3rem, 10vw, 8rem); /* clamp : min, préféré, max */
   font-weight: 300;
   letter-spacing: 0.3em;
@@ -55,7 +55,7 @@ h1~p{
 }
 
 h2 {
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 3rem;       
   font-weight: 900;
   color: var(--couleur-accent);
@@ -63,7 +63,7 @@ h2 {
 }
 
 h3 {
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 2rem;       
   font-weight: 400;
   color: var(--couleur-texte);
@@ -79,7 +79,7 @@ h2~p{
 h3~p{
   color: var(--couleur-texte);
   opacity: 1;
-  font-family: var(--police-texte);
+  font-family: var(--police-texte), sans-serif;
   font-size: 1rem;
   font-weight: 400;
 
@@ -202,7 +202,7 @@ section {
   margin-top: 3rem;
   padding-left: 1.5rem;
   border-left: 3px solid var(--couleur-accent);
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 1.4rem;
   font-style: italic;
   opacity: 0.9;
@@ -211,7 +211,7 @@ section {
   margin-top: 3rem;
   padding-left: 1.5rem;
   border-left: 3px solid var(--couleur-accent);
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 1.4rem;
   font-style: italic; 
   opacity: 0.9;
@@ -255,16 +255,15 @@ section {
 #numero-piste {
   font-size: 1rem;
   opacity: 0.7;
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
 }
 
 #nom-piste {
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 1.7rem;
   color: var(--couleur-accent);
 }
 
-/* Barre de progression */
 #barre-container {
   width: 100%;
   height: 3px;
@@ -275,7 +274,7 @@ section {
 
 #barre-progression {
   height: 100%;
-  width: 0%;
+  width: 0;
   background: var(--couleur-accent);
   border-radius: 2px;
   transition: width 0.1s linear;
@@ -366,7 +365,7 @@ section {
 }
 
 .carte-album:hover {
-  transform: translateY(-6px);              /* Légèrement vers le haut */
+  transform: translateY(-6px);
   border-color: var(--couleur-accent);
 }
 
@@ -402,7 +401,7 @@ section {
 
 .carte-album img {
   width: 100%;   
-  aspect-ratio: 1 / 1; /* Carré parfait, comme une pochette */
+  aspect-ratio: 1 / 1;
   object-fit: cover; 
   display: block;
   margin-bottom: 1rem;
@@ -433,7 +432,6 @@ section {
   margin-bottom: 1rem;
   border-radius: 2px;
   border: 3px solid #2a2a2a;
-  border-radius: 2px;
   filter: grayscale(30%);
   transition: transform 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
@@ -534,11 +532,9 @@ section {
   gap: 0.8rem;
 }
 
-
 .carte-video iframe {
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: none;
   border-radius: 4px;
   border: 1px solid #2a2a2a;
 }
@@ -556,17 +552,17 @@ section {
 }
 
 .legende-video {
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 1rem;
   opacity: 0.7;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
 
+
 /* =====================
    TIMELINE
 ===================== */
-
 #dates{
     max-width:900px;
     margin:auto;
@@ -606,7 +602,7 @@ section {
 }
 
 .annee{
-    font-family:var(--police-titre);
+    font-family:var(--police-titre), serif;
     color:var(--couleur-accent);
     font-size:2rem;
     font-weight: 700;
@@ -703,7 +699,7 @@ section {
   color: var(--couleur-texte);
   padding: 0.8rem 1rem;
   border-radius: 2px;
-  font-family: var(--police-texte);
+  font-family: var(--police-texte), sans-serif;
   font-size: 1rem;
   transition: border-color 0.3s ease;
   outline: none;
@@ -731,7 +727,7 @@ section {
 #message::-webkit-scrollbar-thumb {
   background: var(--couleur-tertiaire);
   border: 2px solid var(--couleur-accent);
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 #message::-webkit-scrollbar-thumb:hover {
@@ -742,7 +738,7 @@ section {
 #message::-webkit-resizer {
   background-color: var(--couleur-tertiaire);
   border: 2px solid var(--couleur-accent);
-  border-radius: 0px;
+  border-radius: 0;
 }
 
 /* Cacher le resizer par défaut */
@@ -767,11 +763,10 @@ section {
   border: 2px solid transparent;
   border-radius: 2px;
   padding: 0.9rem 1rem;
-  font-family: var(--police-texte);
+  font-family: var(--police-texte), sans-serif;
   font-size: 1.1rem;
   letter-spacing: 0.1em;
   cursor: pointer;
-  border-radius: 2px;
   transition: opacity 0.3s ease;
 }
 
@@ -800,19 +795,25 @@ section {
   color:#ff5d5d;
 }
 
+.champ-cache {
+  position: absolute;
+  left: -9999px;
+  opacity: 0;
+  height: 0;
+  width: 0;
+}
+
 
 /* =====================
    ANIMATIONS AU SCROLL
 ===================== */
-
-/* État initial : invisible et décalé vers le bas */
 .apparait {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-/* État final : visible — ajouté par JS quand l'élément entre à l'écran */
+
 .apparait.visible {
   opacity: 1;
   transform: translateY(0);
@@ -955,6 +956,14 @@ footer {
   opacity: 0.7;
 }
 
+.footer-credit {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  opacity: 0.6;
+  font-style: italic;
+  text-align: center;
+}
+
 
 /* =====================
    MENTIONS LÉGALES
@@ -966,7 +975,7 @@ footer {
 }
 
 #mentions h1 {
-  font-family: var(--police-titre);
+  font-family: var(--police-titre), serif;
   font-size: 3rem;
   color: var(--couleur-accent);
   margin-bottom: 3rem;
