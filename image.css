@@ -474,3 +474,14 @@ body.page-image footer {
         height: 180px;
     }
 }
+
+/* Bandeau image à propos */
+#apropos-image img {
+    width: 100%;
+    max-width: 800px;
+    height: auto;
+    display: block;
+    margin-top: 1.5rem;
+    border-radius: 2px;
+    border: 1px solid #2a2a2a;
+}
