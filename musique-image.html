@@ -8,23 +8,35 @@
     <link rel="stylesheet" href="image.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap"
+    rel="stylesheet">
 </head>
+
+<header id="header-image">
+
+    <!-- Logo -->
+    <a href="index.html" id="logo">
+        <img src="https://res.cloudinary.com/jyllfp1b/image/upload/v1791982210/mazette2.jpg" alt="logo de Mazette">
+        <!-- <span>MAZETTE</span> -->
+    </a>
+
+    <!-- Burger -->
+    <button id="menu-btn" aria-label="Ouvrir le menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+</header>
 <body class="page-image">
 
-<!-- BOUTON HAMBURGER -->
-<button id="menu-btn" aria-label="Ouvrir le menu">
-    <span></span>
-    <span></span>
-    <span></span>
-</button>
 
 <!-- MENU LATÉRAL -->
 <nav id="menu-lateral" class="menu-ferme">
     <button id="menu-fermer" aria-label="Fermer le menu">✕</button>
     <ul>
         <li><a href="index.html">Accueil</a></li>
-        <li><a href="index.html#bio">Bio</a></li>
+        <li><a href="index.html#bio">Présentation</a></li>
         <li><a href="index.html#musique">Musique</a></li>
         <li><a href="index.html#galerie">Galerie</a></li>
         <li><a href="index.html#live">Live</a></li>
@@ -37,21 +49,18 @@
 
 <!-- HERO PLEIN ÉCRAN -->
 <section id="hero-image">
-
-    <!-- Image de fond cinématographique -->
-    <!-- Remplace le src par une image de Mazette en studio ou une image cinéma -->
     <div id="hero-overlay"></div>
-
     <div id="hero-contenu">
-        <h1 id="hero-titre">Musique à l'image</h1>
-        <br>
-        <p id="hero-surtitre">MAZETTE</p>
-        <p id="hero-soustitre">Compositeur · Bandes originales · Cinéma & Audiovisuel</p>
-        <a href="#apropos-image" id="hero-btn">Découvrir</a>
+        <h1 id="hero-titre">MUSIQUE</h1>
+        <p id="hero-soustitre">Des projets originaux et des compositions<br>
+        pour le cinéma, la publicité, les courts-métrages<br>
+        et plus encore...</p>
     </div>
 
-    <!-- Flèche vers le bas -->
-    <div id="hero-fleche">&#8595;</div>
+    <!-- Flèche scroll -->
+    <a href="#section-projets" id="hero-fleche" aria-label="Scroller vers le bas">
+        &#8964;
+    </a>
 
 </section>
 <!-- SECTION EXTRAIT AUDIO/VIDÉO -->
@@ -107,7 +116,7 @@
 <!-- SECTION À PROPOS -->
 <section id="apropos-image">
     <h2>L'image comme partition</h2>
-    <p class="placeholder-texte">Benjamin Bataillon est compositeur de musique à l’image et producteur de musique
+    <p>Benjamin Bataillon est compositeur de musique à l’image et producteur de musique
         électronique.<br>
         Formé à la composition de musique de film au Studio Capital à Paris en 2020, il signe depuis, plusieurs bandes
         originales pour des courts métrages.<br>

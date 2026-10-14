@@ -30,23 +30,26 @@
 /* Bouton hamburger */
 #menu-btn {
     position: fixed;
-    top: 1.5rem;
-    right: 2rem;
+    top: 1.2rem;
+    right: 1.5rem;
     z-index: 200;
     background: none;
     border: none;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 5px;
-    padding: 0.5rem;
+    gap: clamp(6px, 1vw, 8px);
+    padding: 0.8rem;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
 }
 
-/* Les 3 barres */
 #menu-btn span {
     display: block;
-    width: 28px;
-    height: 2px;
+    width: clamp(28px, 5vw, 40px);
+    height: 3px;
     background: var(--couleur-texte);
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -68,7 +71,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 3rem 2.5rem;
+    padding: 3rem 0.5rem;
     transform: translateX(0);
     transition: transform 0.4s ease;
 }
@@ -135,95 +138,130 @@
 }
 
 /* =====================
-   HERO-IMAGE
+   HEADER
 ===================== */
-/* Override du fond de page — même image mais plus sombre */
-body.page-image {
-    background-image: url("https://res.cloudinary.com/jyllfp1b/image/upload/v1786628283/fond2.jpg");
-    background-size: cover;
-    background-position: center 20%;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-color: #050505;
-}
-
-/* Filtre noir opaque par-dessus — effet film noir */
-body.page-image::before {
-    content: "";
+#header-image {
     position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 0;
-    pointer-events: none;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.2rem 2rem;
+    display: flex;
+    justify-content: space-between;  /* logo à gauche, burger à droite */
+    align-items: center;
+    z-index: 200;
+    background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.9) 30%,    /* ← augmente l'opacité ici */
+            rgba(0, 0, 0, 0.0) 100%
+    );
 }
 
-body.page-image nav,
-body.page-image main,
-body.page-image section,
-body.page-image footer {
-    position: relative;
+#logo {
+    text-decoration: none;
+    color: var(--couleur-texte);
+    font-family: var(--police-titre), serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+#logo img {
+    height: clamp(40px, 6vw, 70px); /* min, préféré, max */
+    width: auto;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* =====================
+   HERO — TITRE À GAUCHE
+===================== */
+#hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+            to right,
+            rgba(0, 0, 0, 0.9) 0%,
+            rgba(0, 0, 0, 0.4) 60%,
+            rgba(0, 0, 0, 0.1) 100%
+    );
     z-index: 1;
+}
+#hero-image {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: flex-end;  /* contenu en bas à gauche */
+    background-image: url("https://res.cloudinary.com/jyllfp1b/image/upload/v1790687490/img-musicAlimage/img-filmMedusa.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#hero-contenu {
+    position: relative;
+    z-index: 2;
+    padding: 4rem 2.5rem;   /* aligné à gauche */
+    text-align: left;       /* titre à gauche */
+    max-width: 600px;
 }
 
 #hero-titre {
     font-family: var(--police-titre), serif;
-    font-size: clamp(4rem, 7vw, 4rem); /* plus proche du h2 */
-    font-weight: 800;                      /* même graisse que h2 */
-    letter-spacing: 0.05em;               /* moins espacé que avant */
-    color: var(--couleur-accent);          /* doré */
-    text-align: center;
-    line-height: 1.2;
+    font-size: clamp(3.5rem, 8vw, 7rem);
+    font-weight: 900;
+    color: var(--couleur-texte);
+    letter-spacing: 0.05em;
+    margin-bottom: 1.5rem;
     animation: apparition 1s ease forwards;
-    animation-delay: 0.3s;
     opacity: 0;
 
     /* Lignes décoratives */
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 1rem;
 }
 
-/* Ligne au-dessus et en dessous */
 #hero-titre::before,
 #hero-titre::after {
     content: "";
     display: block;
-    width: 350px;           /* longueur de la ligne */
-    height: 4px;           /* épaisseur */
-    background: linear-gradient(
-            to right,
-            transparent,
-            var(--couleur-accent),
-            transparent
-    );
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, var(--couleur-accent), transparent);
 }
 
-
-/* ================================
-   Liens "Découvrir"/"me contacter"
-=================================== */
-/* Bouton "Découvrir" */
-#hero-btn {
-    color: var(--couleur-third);
+#hero-soustitre {
+    font-family: var(--police-texte), sans-serif;
+    font-size: 1rem;
+    color: var(--couleur-texte);
+    opacity: 0;
+    line-height: 1.8;
+    animation: apparition 1s ease forwards;
+    animation-delay: 0.4s;
 }
 
-#hero-btn:hover {
-    opacity: 0.85;
-    color: var(--couleur-accent);
+/* Flèche scroll */
+#hero-fleche {
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    color: var(--couleur-texte);
+    font-size: 2rem;
+    opacity: 0.5;
+    text-decoration: none;
+    animation: rebond 2s ease-in-out infinite;
+    transition: opacity 0.3s ease;
 }
 
-/* Bouton "Me contacter" */
-.btn-contact-image {
-
-    color: var(--couleur-third);
+#hero-fleche:hover {
+    opacity: 1;
 }
-
-.btn-contact-image:hover {
-    opacity: 0.85;
-    color: var(--couleur-accent);
-}
-
 
 /* =====================
    MINI LECTEUR

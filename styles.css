@@ -56,7 +56,7 @@ h1~p{
 
 h2 {
   font-family: var(--police-titre), serif;
-  font-size: 3rem;       
+  font-size: 3rem;
   font-weight: 900;
   color: var(--couleur-accent);
   margin-bottom: 2rem;
@@ -64,7 +64,7 @@ h2 {
 
 h3 {
   font-family: var(--police-titre), serif;
-  font-size: 2rem;       
+  font-size: 2rem;
   font-weight: 400;
   color: var(--couleur-texte);
   margin-bottom: 2rem;
@@ -80,7 +80,6 @@ h3~p{
   color: var(--couleur-texte);
   opacity: 1;
   font-family: var(--police-texte), sans-serif;
-  font-size: 1rem;
   font-weight: 400;
 
 }
@@ -179,22 +178,6 @@ section {
   margin: auto; 
 }
 
-/* =====================
-   BIO / MUSIQUE
-===================== */
-#bio p {
-  font-size: 1.5rem;
-  max-width: 900px; 
-  opacity: 0.85;
-  line-height: 1.9;
-}
-
-#musique p {
-  font-size: 1.5rem;
-  max-width: 900px;    
-  opacity: 0.85;
-  line-height: 1.9;
-}
 /* =====================
    CITATION PRESSE
 ===================== */
@@ -826,6 +809,65 @@ section {
 .apparait:nth-child(5) { transition-delay: 0.4s; }
 .apparait:nth-child(6) { transition-delay: 0.5s; }
 .apparait:nth-child(7) { transition-delay: 0.6s; }
+
+
+/* =====================
+   DESKTOP LARGE
+===================== */
+@media (min-width: 1024px) {
+
+  section {
+    max-width: 1400px;
+    padding: 5rem 6rem;
+  }
+
+  #bio p,
+  #musique p,
+  #live {
+    font-size: 1.1rem !important;  /* !important pour gagner sur h3~p */
+    line-height: 2;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    opacity: 0.9;
+  }
+
+  #bio i,
+  #musique i,
+  #live i{
+    display: block;          /* ← pour que max-width fonctionne */
+    max-width: 600px;        /* ← plus étroit que le texte normal */
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem !important;   /* ← taille différente */
+    line-height: 1.8;
+    opacity: 1;            /* ← légèrement estompé */
+    font-style: italic;      /* ← garde l'italique */
+  }
+}
+
+  #bio blockquote,
+  #musique blockquote {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    text-align: center;
+    border-left: none;
+    border-top: 1px solid var(--couleur-accent);
+    border-bottom: 1px solid var(--couleur-accent);
+    padding: 1.5rem 0;
+    font-size: 1.3rem;
+  }
+
+  #contact p {
+    font-size: 1.1rem !important;
+  }
+
+  .contenu p {
+    font-size: 1rem !important;
+  }
+}
 
 
 /* =====================
