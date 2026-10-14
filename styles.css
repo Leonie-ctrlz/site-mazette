@@ -100,7 +100,7 @@ h2~h3{
 
 blockquote{
   color: var(--couleur-texte);
-
+  font-family: var(--police-texte), sans-serif;
 }
 
 
