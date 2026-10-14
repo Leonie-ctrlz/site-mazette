@@ -845,7 +845,6 @@ section {
     opacity: 1;            /* ← légèrement estompé */
     font-style: italic;      /* ← garde l'italique */
   }
-}
 
   #bio blockquote,
   #musique blockquote {
