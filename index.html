@@ -11,27 +11,126 @@
 </head>
 <body>
 
-  <!-- NAVIGATION -->
+<!-- HEADER -->
+<header id="header-principal">
+  <!-- Ligne 1 : burger + logo -->
+  <div id="header-top">
+    <button id="burger-btn" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+  <!-- Logo centré -->
+  <a href="#accueil" id="header-logo">
+    <img src="https://res.cloudinary.com/jyllfp1b/image/upload/v1791982210/mazette2.jpg" alt="Logo Mazette">
+  </a>
+  </div>
+
+  <!-- Ligne 2 : navigation -->
+  <nav id="header-nav">
+    <ul>
+      <li><a href="#accueil">Accueil</a></li>
+      <li><a href="#bio">Présentation</a></li>
+      <li><a href="#musique">Discographie</a></li>
+      <li><a href="musique-image.html">Musique à l'image</a></li>
+      <li><a href="#galerie">Galerie</a></li>
+      <li><a href="#live">Live</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+</header>
+
+<!-- MENU LATÉRAL -->
+<div id="menu-lateral" class="menu-ferme">
+  <button id="menu-lateral-fermer">✕</button>
   <nav>
     <ul>
       <li><a href="#accueil">Accueil</a></li>
       <li><a href="#bio">Présentation</a></li>
       <li><a href="#musique">Discographie</a></li>
+      <li><a href="musique-image.html">Musique à l'image</a></li>
       <li><a href="#galerie">Galerie</a></li>
       <li><a href="#live">Live</a></li>
-      <li><a href="musique-image.html">Musique à l'image</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
+</div>
+
+<!-- Fond sombre -->
+<div id="menu-overlay" class="menu-ferme"></div>
 
   <!-- HERO -->
-  <section id="accueil">
+<section id="accueil">
+
+  <!-- CENTRE : titre hero -->
+  <div id="hero-centre">
     <h1>MAZETTE</h1>
     <p>Compositeur · Beatmaker · Tours, France</p>
-    <div id="actu">
+  </div>
 
+  <!-- BAS : actu à la une -->
+  <div id="hero-bas">
+
+    <!-- GAUCHE : texte actu -->
+    <div id="actu-gauche">
+      <div id="actu-header">
+        <span id="actu-label">À la une</span>
+        <span id="actu-separator">·</span>
+        <span id="actu-date">Février 2026</span>
+      </div>
+      <h2 id="actu-titre">A NEW ERA</h2>
+      <p id="actu-desc">
+      <p><strong>A NEW ERA</strong> marque un nouveau chapitre pour Mazette. Cet EP instrumental de 8 titres affirme une
+        direction plus électronique, tout en gardant ce qui reste au cœur de sa musique : l’émotion, les ambiances et
+        la progression.</p>
+      <i>« Cet EP, je l’ai composé d’une traite. Tout s’est enchaîné très naturellement, presque comme si tout prenait
+        forme tout seul. Pour moi, il est vraiment à écouter comme une histoire. Pendant sa création, j’ai clairement
+        ressenti un énorme “feu vert” de l’âme. »</i>
+      <hr>
     </div>
-  </section>
+
+    <!-- DROITE : lecteur -->
+    <div id="actu-droite">
+      <div id="actu-lecteur">
+        <!-- Pochette -->
+        <img id="actu-pochette"
+             src="https://res.cloudinary.com/jyllfp1b/image/upload/v1786628297/A_NEW_ERA.jpg"
+             alt="Pochette A New Era">
+
+        <div id="actu-lecteur-contenu">
+          <div id="actu-entete">
+            <span id="actu-numero">01</span>
+            <span id="actu-nom">Story</span>
+          </div>
+          <div id="actu-barre-container">
+            <div id="actu-barre"></div>
+          </div>
+          <div id="actu-temps">
+            <span id="actu-temps-actuel">0:00</span>
+            <span id="actu-temps-total">0:00</span>
+          </div>
+          <div id="actu-boutons">
+            <button id="actu-precedent">⏮</button>
+            <button id="actu-play">▶</button>
+            <button id="actu-suivant">⏭</button>
+          </div>
+          <ul id="actu-tracklist"></ul>
+        </div>
+      </div>
+
+      <!-- Citation -->
+      <blockquote id="actu-citation">
+        "Une vibe à la The Blaze, avec de belles textures et une production soignée..."
+        <cite>— Retour Éditeur via Groover</cite>
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+<audio id="audio"></audio>
 
   <!-- BIO -->
   <section id="bio">
@@ -71,41 +170,8 @@
   <!-- DISCOGRAPHIE -->
   <section id="musique">
     <h2>Discographie</h2>
-    <p><strong>A NEW ERA</strong> marque un nouveau chapitre pour Mazette. Cet EP instrumental de 8 titres affirme une
-      direction plus électronique, tout en gardant ce qui reste au cœur de sa musique : l’émotion, les ambiances et
-      la progression.</p>
-    <i>« Cet EP, je l’ai composé d’une traite. Tout s’est enchaîné très naturellement, presque comme si tout prenait
-      forme tout seul. Pour moi, il est vraiment à écouter comme une histoire. Pendant sa création, j’ai clairement
-      ressenti un énorme “feu vert” de l’âme. »</i><br>
 
-    <blockquote>"Une vibe à la The Blaze, avec de belles textures et une production soignée, qui donne une vraie
-      identité au projet. L'ensemble est cohérent et assez immersif." — Retour Éditeur via Groover</blockquote>
 
-    <!-- LECTEUR A NEW ERA -->
-    <div id="lecteur-anewera">
-      <div id="lecteur-pochette">
-        <img src="https://res.cloudinary.com/jyllfp1b/image/upload/v1786628297/A_NEW_ERA.jpg" alt="Pochette A New Era">
-      </div>
-      <div id="lecteur-contenu">
-        <div id="lecteur-entete">
-          <span id="numero-piste">01</span>
-          <span id="nom-piste">...</span>
-        </div>
-        <div id="barre-container">
-          <div id="barre-progression"></div>
-        </div>
-        <div id="lecteur-temps">
-          <span id="temps-actuel">0:00</span>
-          <span id="temps-total">0:00</span>
-        </div>
-        <div id="lecteur-boutons">
-          <button id="btn-precedent">⏮</button>
-          <button id="btn-play">▶</button>
-          <button id="btn-suivant">⏭</button>
-        </div>
-        <ul id="tracklist"></ul>
-      </div>
-    </div>
 
     <audio id="audio"></audio>
 
@@ -208,7 +274,7 @@
       <img src="https://res.cloudinary.com/jyllfp1b/image/upload/fond2.jpg" alt="Shooting ben2">
     </div>
 
-    <h3>VIDEO</h3>
+    <h3>CLIP</h3>
     <p>Entre écoute profonde et efficacité club, MAZETTE relie atmosphères filmiques et pulsation électronique.</p>
     <div class="grille-video">
 
@@ -221,14 +287,6 @@
         <iframe src="https://www.youtube.com/embed/yn3qLowqRiU" title="Près de toi — Mazette" allowfullscreen></iframe>
         <p class="legende-video">Près de toi — Mazette</p>
       </div>
-
-      <div class="carte-video">
-        <video controls>
-          <source src="https://res.cloudinary.com/jyllfp1b/video/upload/v1786628351/Mazette_festival_TDS_2023.mp4" type="video/mp4">
-        </video>
-        <p class="legende-video">Festival Terre du Son 2023</p>
-      </div>
-
     </div>
   </section>
 
@@ -241,28 +299,47 @@
   </div>
 
   <!-- LIVE -->
-  <section id="live">
-    <h2>Le live</h2>
+<section id="live">
+  <!-- PHOTO PLEINE LARGEUR EN HAUT -->
+  <div id="live-banniere">
+    <h2>Live</h2>
+    <img src="https://res.cloudinary.com/jyllfp1b/image/upload/v1792077347/MAZETTE_PUBLIC.jpg" alt="Photo du public
+        de MAZETTE">
+    <div id="live-banniere-overlay">
 
-    <p>Le live de <strong>Mazette</strong> se construit comme une histoire.</p>
-    <p>Il commence dans une ambiance douce et aérienne, dans un registre <strong>electronica</strong>, puis gagne peu à peu
-    en rythme et en tension pour évoluer vers une <strong>techno mélodique plus directe</strong>.</p>
-    <p>L’idée est de créer un fil conducteur entre les morceaux, avec des transitions pensées comme des passages d’un
-    univers à l’autre. Le live avance par étapes, entre moments plus calmes, montées d’énergie et changements de
-    textures, dans une approche résolument narrative.</p>
-    <p>Sur scène, Mazette joue avec <strong>Ableton Live</strong>, un <strong>APC40</strong>, plusieurs
-    <strong>claviers</strong> et un <strong>pad Maschine</strong>. Les morceaux sont reconstruits à partir de séquences,
-    de synthés, de boucles et d’effets, ce qui lui permet de modifier les arrangements et de faire évoluer les titres
-    en direct.</p>
-    <p>Présent sur scène depuis plus de dix ans, Mazette s’est produit dans des festivals comme <strong>Terres du Son</strong>
-    et <strong>Aucard de Tours</strong>, et a notamment assuré plusieurs premières parties de <strong>Wax Tailor</strong>
-    durant une tournée aux côtés du beatmaker <strong>Mounika</strong>.</p>
-    <p>Au fil des années, ses lives ont également accueilli musiciens, rappeurs et danseurs, faisant évoluer son rapport à
-    la scène et à la performance.</p>
-    <p>Aujourd’hui, il développe une nouvelle formule live en solo, recentrée autour de son univers et de son jeu sur scène.
-    <strong>Un live électronique onirique, entre contemplation et intensité.</strong></p>
+    </div>
+  </div>
+  <!-- CONTENU EN DESSOUS -->
+  <div id="live-contenu">
+    <p class="live-intro">Le live de <strong>Mazette</strong> se construit comme une histoire.</p>
+    <div id="live-texte-colonnes">
+      <p>Il commence dans une ambiance douce et aérienne, dans un registre <strong>electronica</strong>, puis gagne peu à peu
+        en rythme et en tension pour évoluer vers une <strong>techno mélodique plus directe</strong>.</p>
+      <p>L’idée est de créer un fil conducteur entre les morceaux, avec des transitions pensées comme des passages d’un
+        univers à l’autre. Le live avance par étapes, entre moments plus calmes, montées d’énergie et changements de
+        textures, dans une approche résolument narrative.</p>
+      <p>Sur scène, Mazette joue avec <strong>Ableton Live</strong>, un <strong>APC40</strong>, plusieurs
+        <strong>claviers</strong> et un <strong>pad Maschine</strong>. Les morceaux sont reconstruits à partir de séquences,
+        de synthés, de boucles et d’effets, ce qui lui permet de modifier les arrangements et de faire évoluer les titres
+        en direct.</p>
+      <p>Présent sur scène depuis plus de dix ans, Mazette s’est produit dans des festivals comme <strong>Terres du Son</strong>
+        et <strong>Aucard de Tours</strong>, et a notamment assuré plusieurs premières parties de <strong>Wax Tailor</strong>
+        durant une tournée aux côtés du beatmaker <strong>Mounika</strong>.</p>
+      <p>Au fil des années, ses lives ont également accueilli musiciens, rappeurs et danseurs, faisant évoluer son rapport à
+        la scène et à la performance.</p>
+      <p>Aujourd’hui, il développe une nouvelle formule live en solo, recentrée autour de son univers et de son jeu sur scène.
+        <strong>Un live électronique onirique, entre contemplation et intensité.</strong></p>
+    </div>
     <i>« Avec ma nouvelle formule solo, je cherche à créer un espace plus intime avec le public, dans une ambiance
       rêveuse, douce et dansante. »</i>
+
+    <h3>En scène</h3>
+    <div class="carte-video">
+      <video controls>
+        <source src="https://res.cloudinary.com/jyllfp1b/video/upload/v1786628351/Mazette_festival_TDS_2023.mp4" type="video/mp4">
+      </video>
+      <p class="legende-video">Festival Terre du Son 2023</p>
+    </div>
 
     <h3>Quelques dates clés</h3>
     <div class="timeline">
@@ -353,7 +430,7 @@
           <p>Tours (37)</p>
         </div>
       </div>
-
+    </div>
     </div>
   </section>
 

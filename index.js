@@ -1,4 +1,76 @@
 // =====================
+// HEADER — SCROLL + BURGER
+// =====================
+const headerPrincipal = document.getElementById("header-principal");
+const headerLogo      = document.getElementById("header-logo");
+const burgerBtn       = document.getElementById("burger-btn");
+const menuLateral     = document.getElementById("menu-lateral");
+const menuFermerBtn   = document.getElementById("menu-lateral-fermer");
+const menuOverlay     = document.getElementById("menu-overlay");
+const headerNav       = document.getElementById("header-nav");
+
+let dernierScroll = 0;
+
+// Logo réduit + nav cachée au scroll
+window.addEventListener("scroll", function() {
+  const scrollActuel = window.scrollY;
+
+  // Logo réduit après 80px
+  if (scrollActuel > 80) {
+    headerLogo.classList.add("logo-petit");
+  } else {
+    headerLogo.classList.remove("logo-petit");
+  }
+
+  // Nav cachée quand on scrolle vers le bas
+  const headerNav = document.getElementById("header-nav");
+  if (scrollActuel > dernierScroll && scrollActuel > 100) {
+    headerNav.classList.add("nav-cachee");
+  } else {
+    headerNav.classList.remove("nav-cachee");
+  }
+
+  dernierScroll = scrollActuel;
+});
+
+headerPrincipal.addEventListener("mouseenter", function() {
+  headerNav.classList.remove("nav-cachee");
+});
+
+headerPrincipal.addEventListener("mouseleave", function() {
+  if (window.scrollY > 100) {
+    headerNav.classList.add("nav-cachee");
+  }
+});
+
+// Ouvrir menu
+burgerBtn.addEventListener("click", function() {
+  menuLateral.classList.remove("menu-ferme");
+  menuOverlay.classList.remove("menu-ferme");
+  burgerBtn.classList.add("ouvert");
+});
+
+// Fermer menu
+function fermerMenu() {
+  menuLateral.classList.add("menu-ferme");
+  menuOverlay.classList.add("menu-ferme");
+  burgerBtn.classList.remove("ouvert");
+}
+
+menuFermerBtn.addEventListener("click", fermerMenu);
+menuOverlay.addEventListener("click", fermerMenu);
+
+document.addEventListener("keydown", function(e) {
+  if (e.key === "Escape") fermerMenu();
+});
+
+// Ferme le menu au clic sur un lien
+document.querySelectorAll("#menu-lateral nav a").forEach(function(lien) {
+  lien.addEventListener("click", fermerMenu);
+});
+
+
+// =====================
 // 1. LES PISTES DE L'EP
 // =====================
 const pistes = [
@@ -13,123 +85,94 @@ const pistes = [
 ];
 
 // =====================
-// 2. RÉCUPÉRATION DES ÉLÉMENTS HTML
+// LECTEUR HERO — ACTU
 // =====================
-const audio            = document.getElementById("audio");
-const btnPlay          = document.getElementById("btn-play");
-const btnSuivant       = document.getElementById("btn-suivant");
-const btnPrecedent     = document.getElementById("btn-precedent");
-const nomPiste         = document.getElementById("nom-piste");
-const numeroPiste      = document.getElementById("numero-piste");
-const barreProgression = document.getElementById("barre-progression");
-const tempsActuel      = document.getElementById("temps-actuel");
-const tempsTotal       = document.getElementById("temps-total");
-const tracklist        = document.getElementById("tracklist");
+const actu = {
+  audio    : document.getElementById("audio"),
+  play     : document.getElementById("actu-play"),
+  suivant  : document.getElementById("actu-suivant"),
+  precedent: document.getElementById("actu-precedent"),
+  nom      : document.getElementById("actu-nom"),
+  numero   : document.getElementById("actu-numero"),
+  barre    : document.getElementById("actu-barre"),
+  actuel   : document.getElementById("actu-temps-actuel"),
+  total    : document.getElementById("actu-temps-total"),
+  tracklist: document.getElementById("actu-tracklist"),
+};
 
-// =====================
-// 3. ÉTAT DU LECTEUR
-// =====================
 let pisteEnCours = 0;
 
-// =====================
-// 4. GÉNÉRER LA TRACKLIST
-// =====================
 pistes.forEach(function(piste, index) {
   const li = document.createElement("li");
   li.innerHTML = "<span>" + piste.numero + "</span> " + piste.titre;
-
   li.addEventListener("click", function() {
     pisteEnCours = index;
     chargerPiste();
-    audio.play();
-    btnPlay.textContent = "⏸";
+    actu.audio.play();
+    actu.play.textContent = "⏸";
   });
-
-  tracklist.appendChild(li);
+  actu.tracklist.appendChild(li);
 });
 
-// =====================
-// 5. CHARGER UNE PISTE
-// =====================
 function chargerPiste() {
   const piste = pistes[pisteEnCours];
+  actu.nom.textContent    = piste.titre;
+  actu.numero.textContent = piste.numero;
+  actu.audio.src          = piste.fichier;
 
-  nomPiste.textContent    = piste.titre;
-  numeroPiste.textContent = piste.numero;
-  audio.src               = piste.fichier;
-
-  document.querySelectorAll("#tracklist li").forEach(function(li) {
+  document.querySelectorAll("#actu-tracklist li").forEach(function(li) {
     li.classList.remove("active");
   });
-  document.querySelectorAll("#tracklist li")[pisteEnCours].classList.add("active");
+  document.querySelectorAll("#actu-tracklist li")[pisteEnCours].classList.add("active");
 }
 
-// =====================
-// 6. BOUTON PLAY / PAUSE
-// =====================
-btnPlay.addEventListener("click", function() {
-  if (audio.paused) {
-    if (!audio.src) chargerPiste();
-    audio.play();
-    btnPlay.textContent = "⏸";
+actu.play.addEventListener("click", function() {
+  if (actu.audio.paused) {
+    if (!actu.audio.src) chargerPiste();
+    actu.audio.play();
+    actu.play.textContent = "⏸";
   } else {
-    audio.pause();
-    btnPlay.textContent = "▶";
+    actu.audio.pause();
+    actu.play.textContent = "▶";
   }
 });
 
-// =====================
-// 7. BOUTONS SUIVANT / PRÉCÉDENT
-// =====================
-btnSuivant.addEventListener("click", function() {
+actu.suivant.addEventListener("click", function() {
   pisteEnCours = (pisteEnCours + 1) % pistes.length;
   chargerPiste();
-  audio.play();
-  btnPlay.textContent = "⏸";
+  actu.audio.play();
+  actu.play.textContent = "⏸";
 });
 
-btnPrecedent.addEventListener("click", function() {
+actu.precedent.addEventListener("click", function() {
   pisteEnCours = (pisteEnCours - 1 + pistes.length) % pistes.length;
   chargerPiste();
-  audio.play();
-  btnPlay.textContent = "⏸";
+  actu.audio.play();
+  actu.play.textContent = "⏸";
 });
 
-// =====================
-// 8. BARRE DE PROGRESSION + TEMPS
-// =====================
-audio.addEventListener("timeupdate", function() {
-  const pourcentage = (audio.currentTime / audio.duration) * 100;
-  barreProgression.style.width = pourcentage + "%";
-
-  const min = Math.floor(audio.currentTime / 60);
-  const sec = Math.floor(audio.currentTime % 60);
-  tempsActuel.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
+actu.audio.addEventListener("timeupdate", function() {
+  const pct = (actu.audio.currentTime / actu.audio.duration) * 100;
+  actu.barre.style.width = pct + "%";
+  const min = Math.floor(actu.audio.currentTime / 60);
+  const sec = Math.floor(actu.audio.currentTime % 60);
+  actu.actuel.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
 });
 
-audio.addEventListener("loadedmetadata", function() {
-  const min = Math.floor(audio.duration / 60);
-  const sec = Math.floor(audio.duration % 60);
-  tempsTotal.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
+actu.audio.addEventListener("loadedmetadata", function() {
+  const min = Math.floor(actu.audio.duration / 60);
+  const sec = Math.floor(actu.audio.duration % 60);
+  actu.total.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
 });
 
-// =====================
-// 9. PISTE SUIVANTE AUTOMATIQUE
-// =====================
-audio.addEventListener("ended", function() {
-  btnSuivant.click();
+actu.audio.addEventListener("ended", function() {
+  actu.suivant.click();
 });
 
-// =====================
-// 10. CLIQUER SUR LA BARRE POUR AVANCER
-// =====================
-document.getElementById("barre-container").addEventListener("click", function(e) {
-  const largeurBarre = this.offsetWidth;
-  const clicPosition = e.offsetX;
-  audio.currentTime = (clicPosition / largeurBarre) * audio.duration;
+document.getElementById("actu-barre-container").addEventListener("click", function(e) {
+  actu.audio.currentTime = (e.offsetX / this.offsetWidth) * actu.audio.duration;
 });
 
-// Initialisation
 chargerPiste();
 
 
