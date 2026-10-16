@@ -7,15 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap"
-      rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap"
-      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Inter:wght@300;400&display=swap"
+          rel="stylesheet">
 </head>
 <body>
+
 <!-- HEADER -->
 <header id="header-principal">
-    <!-- Ligne 1 : burger + logo -->
     <div id="header-top">
         <button id="burger-btn" aria-label="Menu">
             <span></span>
@@ -23,39 +21,38 @@
             <span></span>
         </button>
 
-        <!-- Logo centré -->
-        <a href="#accueil" id="header-logo">
+        <!-- Logo : renvoie vers la page d'accueil -->
+        <a href="index.html" id="header-logo">
             <img src="https://res.cloudinary.com/jyllfp1b/image/upload/v1791982210/mazette2.jpg" alt="Logo Mazette">
         </a>
     </div>
 
-    <!-- Ligne 2 : navigation -->
+    <!-- Les ancres pointent vers index.html : elles n'existent pas sur cette page -->
     <nav id="header-nav">
         <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#bio">Présentation</a></li>
-            <li><a href="#musique">Discographie</a></li>
+            <li><a href="index.html#accueil">Accueil</a></li>
+            <li><a href="index.html#bio">Présentation</a></li>
+            <li><a href="index.html#musique">Discographie</a></li>
             <li><a href="musique-image.html">Musique à l'image</a></li>
-            <li><a href="#galerie">Galerie</a></li>
-            <li><a href="#live">Live</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#galerie">Galerie</a></li>
+            <li><a href="index.html#live">Live</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
-
 </header>
 
 <!-- MENU LATÉRAL -->
 <div id="menu-lateral" class="menu-ferme">
-    <button id="menu-lateral-fermer">✕</button>
+    <button id="menu-lateral-fermer" aria-label="Fermer le menu">✕</button>
     <nav>
         <ul>
-            <li><a href="#accueil">Accueil</a></li>
-            <li><a href="#bio">Présentation</a></li>
-            <li><a href="#musique">Discographie</a></li>
+            <li><a href="index.html#accueil">Accueil</a></li>
+            <li><a href="index.html#bio">Présentation</a></li>
+            <li><a href="index.html#musique">Discographie</a></li>
             <li><a href="musique-image.html">Musique à l'image</a></li>
-            <li><a href="#galerie">Galerie</a></li>
-            <li><a href="#live">Live</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="index.html#galerie">Galerie</a></li>
+            <li><a href="index.html#live">Live</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
         </ul>
     </nav>
 </div>
@@ -63,25 +60,20 @@
 <!-- Fond sombre -->
 <div id="menu-overlay" class="menu-ferme"></div>
 
-<nav>
-    <ul>
-        <li><a href="index.html">Accueil</a></li>
-        <li><a href="index.html#bio">Bio</a></li>
-        <li><a href="index.html#musique">Musique</a></li>
-        <li><a href="index.html#galerie">Galerie</a></li>
-        <li><a href="index.html#live">Live</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-    </ul>
-</nav>
-
 <main id="mentions">
 
     <h1>Mentions légales</h1>
 
     <section class="mention-bloc">
         <h2>Éditeur du site</h2>
-        <p>Ce site est édité par Léonie R.</p>
-        <p>Email : rom.leonie@gmail.com</p>
+        <p>Ce site est édité par Mazette.<br>
+            Contact : <a href="mailto:ben.mazette@gmail.com">ben.mazette@gmail.com</a></p>
+
+        <h3>Directeur de la publication</h3>
+        <p>Mazette</p>
+
+        <h3>Conception et réalisation</h3>
+        <p>Léonie Roman</p>
     </section>
 
     <section class="mention-bloc">
@@ -90,33 +82,56 @@
             GitHub, Inc. — 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA<br>
             <a href="https://pages.github.com" target="_blank" rel="noopener">pages.github.com</a></p>
         <p>Les médias sont hébergés par <strong>Cloudinary</strong><br>
-            Cloudinary Ltd. — 3 Ha'Galim Ave., Herzliya, Israel<br>
+            Cloudinary Ltd. — 3 Ha'Galim Ave., Herzliya, Israël<br>
             <a href="https://cloudinary.com" target="_blank" rel="noopener">cloudinary.com</a></p>
     </section>
 
     <section class="mention-bloc" id="confidentialite">
-        <h2>Confidentialité & RGPD</h2>
-        <p>Ce site collecte des données personnelles uniquement via le formulaire de contact
-            (nom et adresse email), transmises à <strong>Formspree</strong> pour l'envoi du message.</p>
-        <p>Ces données sont utilisées <strong>uniquement pour répondre à votre demande</strong>
-            et ne sont pas conservées au-delà du traitement de celle-ci.</p>
-        <p>Conformément au RGPD, vous disposez d'un droit d'accès, de rectification
-            et de suppression de vos données. Pour exercer ce droit, contactez : rom.leonie@gmail.com</p>
+        <h2>Confidentialité &amp; RGPD</h2>
+        <p><strong>Responsable du traitement :</strong> Mazette —
+            <a href="mailto:ben.mazette@gmail.com">ben.mazette@gmail.com</a></p>
+        <p><strong>Données collectées :</strong> uniquement via le formulaire de contact
+            (nom, adresse email, sujet et message).</p>
+        <p><strong>Finalité et base légale :</strong> ces données servent uniquement à répondre à votre demande.
+            Le traitement repose sur l'intérêt légitime de l'éditeur à répondre aux messages qui lui sont adressés.</p>
+        <p><strong>Destinataire :</strong> les messages sont transmis via <strong>Formspree</strong>,
+            société établie aux États-Unis. Les données sont donc transférées hors de l'Union européenne.</p>
+        <p><strong>Durée de conservation :</strong> les données sont supprimées au plus tard 3 ans
+            après le dernier échange.</p>
+        <p><strong>Vos droits :</strong> conformément au RGPD, vous disposez d'un droit d'accès, de rectification,
+            de suppression, d'opposition et de limitation du traitement de vos données.
+            Pour les exercer, écrivez à <a href="mailto:ben.mazette@gmail.com">ben.mazette@gmail.com</a>.
+            Vous pouvez également adresser une réclamation à la CNIL
+            (<a href="https://www.cnil.fr" target="_blank" rel="noopener">cnil.fr</a>).</p>
+    </section>
+
+    <section class="mention-bloc">
+        <h2>Cookies</h2>
+        <p>Ce site ne dépose aucun cookie de suivi ou de mesure d'audience.
+            Les vidéos sont intégrées en mode « confidentialité renforcée » de YouTube
+            et ne déposent pas de cookies tant que vous ne les lancez pas.</p>
     </section>
 
     <section class="mention-bloc">
         <h2>Propriété intellectuelle</h2>
-        <p>L'ensemble du contenu de ce site (textes, images, musiques) est la propriété
-            exclusive de Mazette. Toute reproduction sans autorisation est interdite.</p>
+        <p>Les musiques et textes de ce site sont la propriété exclusive de Mazette.
+            Toute reproduction sans autorisation est interdite.</p>
+        <p>Les photographies restent la propriété de leurs auteurs et sont utilisées avec leur accord.<br>
+            Crédits photo : JC Plaut, Léonie Roman.</p>
     </section>
-
     <a href="index.html" class="retour-accueil">← Retour au site</a>
-
 </main>
 
 <footer>
-    <p>© 2026 Mazette — <a href="mentions-legales.html">Mentions légales</a></p>
+    <p>© 2026 Mazette</p>
+    <nav class="footer-nav">
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+    <p class="footer-credit">Site conçu &amp; développé par Léonie R.</p>
 </footer>
 
+<script src="index.js"></script>
 </body>
 </html>
