@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,9 +8,60 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&display=swap"
-          rel="stylesheet">
+      rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cormorant+Garamond:wght@300;400&family=Inter:wght@300;400&display=swap"
+      rel="stylesheet">
 </head>
 <body>
+<!-- HEADER -->
+<header id="header-principal">
+    <!-- Ligne 1 : burger + logo -->
+    <div id="header-top">
+        <button id="burger-btn" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <!-- Logo centré -->
+        <a href="#accueil" id="header-logo">
+            <img src="https://res.cloudinary.com/jyllfp1b/image/upload/v1791982210/mazette2.jpg" alt="Logo Mazette">
+        </a>
+    </div>
+
+    <!-- Ligne 2 : navigation -->
+    <nav id="header-nav">
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#bio">Présentation</a></li>
+            <li><a href="#musique">Discographie</a></li>
+            <li><a href="musique-image.html">Musique à l'image</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#live">Live</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+</header>
+
+<!-- MENU LATÉRAL -->
+<div id="menu-lateral" class="menu-ferme">
+    <button id="menu-lateral-fermer">✕</button>
+    <nav>
+        <ul>
+            <li><a href="#accueil">Accueil</a></li>
+            <li><a href="#bio">Présentation</a></li>
+            <li><a href="#musique">Discographie</a></li>
+            <li><a href="musique-image.html">Musique à l'image</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#live">Live</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+<!-- Fond sombre -->
+<div id="menu-overlay" class="menu-ferme"></div>
 
 <nav>
     <ul>
