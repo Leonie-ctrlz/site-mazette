@@ -1,16 +1,15 @@
-
 /* =====================
    VARIABLES GLOBALES
 ===================== */
 :root {
   --couleur-fond: #0a0a0a;        /* Noir profond */
-  --couleur-texte: #e8e4dc;           /* Blanc cassé : #e8e4dc */
-  --couleur-accent: #c9a84c;          /* Doré ciné : #c9a84c */
+  --couleur-texte: #e8e4dc;       /* Blanc cassé */
+  --couleur-accent: #c9a84c;      /* Doré ciné */
   --couleur-secondaire: #4e4e4e;  /* Gris très sombre */
   --couleur-tertiaire: #488e97;
-  --police-titre: 'Cormorant Garamond', serif;  /* Élégant */
+  --police-titre: 'Cormorant Garamond', serif;
   --police-titre-h2: 'Bebas Neue', sans-serif;
-  --police-texte: 'Inter', sans-serif;            
+  --police-texte: 'Inter', sans-serif;
 }
 
 /* =====================
@@ -22,22 +21,33 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-padding-top: 100px;
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--couleur-fond);
-  background-image: url("https://res.cloudinary.com/jyllfp1b/image/upload/v1786628283/fond2.jpg");
-  background-size: cover;
-  background-position: center 20%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
   font-family: var(--police-texte), sans-serif;
   line-height: 1.7;
-  color: var(--couleur-texte); 
+  color: var(--couleur-texte);
   overflow-x: hidden;
 }
 
-footer {
-  position: relative;
-  z-index: 1;
+/* Fond fixe compatible iOS / Android */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("https://res.cloudinary.com/jyllfp1b/image/upload/v1786628283/fond2.jpg")
+              center 20% / cover no-repeat;
+}
+
+img,
+video,
+iframe {
+  max-width: 100%;
 }
 
 /* =====================
@@ -45,61 +55,60 @@ footer {
 ===================== */
 h1 {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(5rem, 15vw, 14rem);  /* ← très grand */
+  font-size: clamp(3.5rem, 15vw, 14rem);
   font-weight: 400;
   letter-spacing: 0.1em;
+  line-height: 1;
   color: var(--couleur-accent);
   animation: apparition 1.2s ease forwards;
 }
-h1~p{
+
+h1 ~ p {
   color: var(--couleur-texte);
 }
 
 h2 {
   font-family: var(--police-titre-h2), sans-serif;
-  font-size: clamp(2.5rem, 5vw, 5rem);  /* ← plus grand */
-  font-weight: 400;   /* ← Bebas Neue n'a qu'un seul poids */
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 400;
   color: var(--couleur-accent);
   margin-bottom: 2rem;
   letter-spacing: 0.1em;
 }
 
 h3 {
-  font-family: var(--police-titre), serif;
+  font-family: var(--police-titre-h2), serif;
   font-size: 2rem;
   font-weight: 400;
   color: var(--couleur-texte);
   margin-bottom: 2rem;
 }
 
-h2~p{
+h2 ~ p {
   color: var(--couleur-texte);
   opacity: 1;
-
 }
 
-h3~p{
+h3 ~ p {
   color: var(--couleur-texte);
   opacity: 1;
   font-family: var(--police-texte), sans-serif;
   font-weight: 400;
-
 }
 
-h2~h3{
-  color:rgb(241, 230, 204);
-  font-size: 2rem;
+h2 ~ h3 {
+  color: rgb(241, 230, 204);
+  font-size: clamp(1.5rem, 4vw, 2rem);
   font-weight: 800;
   text-decoration: underline;
   text-decoration-color: var(--couleur-accent);
   text-decoration-thickness: 2px;
   text-underline-offset: 6px;
   text-align: center;
-  margin-bottom: 2rem;
-  margin-top: 2rem;
+  margin: 2rem 0;
 }
 
-blockquote{
+blockquote {
   color: var(--couleur-texte);
   font-family: var(--police-texte), sans-serif;
 }
@@ -114,7 +123,7 @@ blockquote{
   width: 100%;
   z-index: 100;
   display: flex;
-  flex-direction: column;    /* ← logo dessus, nav dessous */
+  flex-direction: column;
   align-items: center;
   background: rgba(0, 0, 0, 0.85);
   backdrop-filter: blur(8px);
@@ -126,7 +135,7 @@ blockquote{
 #header-top {
   width: 100%;
   display: flex;
-  justify-content: center;  /* logo centré */
+  justify-content: center;
   align-items: center;
   position: relative;
   padding-bottom: 0.8rem;
@@ -138,7 +147,7 @@ blockquote{
   right: 0;
   display: flex;
   flex-direction: column;
-  gap: clamp(4px, 0.8vw, 6px);
+  gap: 6px;                 /* fixe : l'animation utilise 6px + 2px de trait = 8px */
   background: none;
   border: none;
   cursor: pointer;
@@ -161,7 +170,6 @@ blockquote{
   background: var(--couleur-accent);
 }
 
-/* Animation burger ouvert */
 #burger-btn.ouvert span:nth-child(1) {
   transform: translateY(8px) rotate(45deg);
 }
@@ -182,7 +190,6 @@ blockquote{
   transition: height 0.4s ease;
 }
 
-/* Logo réduit au scroll */
 #header-logo.logo-petit img {
   height: clamp(28px, 3vw, 40px);
 }
@@ -195,7 +202,6 @@ blockquote{
   opacity: 1;
   visibility: visible;
   padding: 0.6rem 0;
-  /* ← supprime overflow: hidden et max-height */
 }
 
 #header-nav.nav-cachee {
@@ -228,14 +234,6 @@ blockquote{
   opacity: 1;
 }
 
-/* =====================
-   RESPONSIVE MOBILE
-===================== */
-@media (max-width: 768px) {
-  #header-nav {
-    display: none;    /* ← menu burger suffit sur mobile */
-  }
-}
 
 /* =====================
    MENU LATÉRAL
@@ -244,8 +242,7 @@ blockquote{
   position: fixed;
   top: 0;
   right: 0;
-  left: auto;
-  width: 320px;
+  width: min(320px, 85vw);
   height: 100%;
   background: #050505;
   border-left: 1px solid #1a1a1a;
@@ -256,6 +253,7 @@ blockquote{
   padding: 3rem 2.5rem;
   transform: translateX(0);
   transition: transform 0.4s ease;
+  overflow-y: auto;
 }
 
 #menu-lateral.menu-ferme {
@@ -271,6 +269,8 @@ blockquote{
   color: var(--couleur-texte);
   font-size: 1.2rem;
   cursor: pointer;
+  min-width: 44px;
+  min-height: 44px;
   transition: color 0.3s ease;
 }
 
@@ -316,45 +316,30 @@ blockquote{
   pointer-events: none;
 }
 
-/* Mobile — cache la nav du header */
-@media (max-width: 768px) {
-  #header-nav {
-    display: none;
-  }
 
-  #header-principal {
-    grid-template-columns: auto 1fr;  /* burger | logo */
-  }
-
-  #header-logo {
-    justify-self: center;
-  }
+/* =====================
+   SECTIONS GÉNÉRALES
+===================== */
+section {
+  padding: 5rem;
+  max-width: 1100px;
+  margin: auto;
 }
 
-#header-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
+#bio {
+  background: none;
+  backdrop-filter: blur(4px);
+  border-radius: 4px;
+  padding: 4rem;
 }
 
-#header-nav a {
-  color: var(--couleur-texte);
-  text-decoration: none;
-  font-size: 0.85rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  transition: color 0.3s ease;
-}
-
-#header-nav a:hover {
-  color: var(--couleur-accent);
-}
 
 /* =====================
    HERO
 ===================== */
 #accueil {
-  height: 100vh;
+  min-height: 100vh;
+  max-width: none;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -364,33 +349,35 @@ blockquote{
   position: relative;
 }
 
+@supports (min-height: 100svh) {
+  #accueil {
+    min-height: 100svh;
+  }
+}
+/* Dégradé en bas du hero */
 #accueil::after {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  width: 100vw;          /* ← 100% de la fenêtre */
-  margin-left: calc(-50vw + 50%);  /* ← compense le max-width du parent */
-  height: 55%;          /* ← couvre le bas */
+  height: 55%;
   background: linear-gradient(
-          to top,
-          rgba(0, 0, 0, 0.85) 0%,
-          rgba(0, 0, 0, 0.5) 50%,
-          transparent 100%
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    transparent 100%
   );
-  z-index: 0;           /* ← derrière le contenu */
+  z-index: 0;
   pointer-events: none;
 }
 
-/* Contenu au-dessus du dégradé */
 #hero-centre,
 #hero-bas {
   position: relative;
   z-index: 1;
 }
 
-/* Titre centré */
 #hero-centre {
   flex: 1;
   display: flex;
@@ -401,19 +388,23 @@ blockquote{
   gap: 0.5rem;
 }
 
+#accueil p {
+  animation: apparition 1.2s ease forwards;
+  animation-delay: 0.4s;
+}
+
 /* Bas — actu à la une */
 #hero-bas {
   width: 100%;
   display: flex;
   align-items: flex-start;
-  gap: 8rem;
-  padding: 2rem 0 3rem
+  gap: clamp(2rem, 5vw, 6rem);
+  padding: 2rem 0 3rem;
 }
 
-/* Gauche — texte */
 #actu-gauche {
-  width: 45%;        /* ← largeur fixe */
-  flex: none;
+  flex: 1 1 45%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -421,12 +412,12 @@ blockquote{
 
 #actu-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.6rem;
   font-size: 0.85rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  opacity: 1;
 }
 
 #actu-label {
@@ -444,10 +435,10 @@ blockquote{
 }
 
 #actu-desc {
-  font-size: 0.9rem !important;
-  opacity: 0.75 !important;
+  font-size: 0.9rem;
+  opacity: 0.75;
   line-height: 1.8;
-  margin-bottom: 0 !important;
+  margin-bottom: 0;
   max-width: 450px;
 }
 
@@ -458,15 +449,15 @@ blockquote{
   max-width: 420px;
 }
 
-/* Droite — lecteur */
 #actu-droite {
-  width: 50%;        /* ← largeur fixe */
-  flex: none;
+  flex: 1 1 50%;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
 }
 
+/* Lecteur du hero */
 #actu-lecteur {
   display: flex;
   gap: 1rem;
@@ -476,10 +467,10 @@ blockquote{
   padding: 1rem;
 }
 
-/* Pochette */
 #actu-pochette {
-  width: 250px;
-  height: 250px;
+  width: clamp(90px, 25vw, 250px);
+  height: auto;
+  aspect-ratio: 1;
   object-fit: cover;
   border-radius: 2px;
   flex-shrink: 0;
@@ -487,6 +478,7 @@ blockquote{
 
 #actu-lecteur-contenu {
   flex: 1;
+  min-width: 0;             /* empêche le contenu de pousser hors du cadre */
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
@@ -582,30 +574,27 @@ blockquote{
   color: var(--couleur-accent);
 }
 
-/* Scrollbar tracklist lecteur hero */
 #actu-tracklist::-webkit-scrollbar {
   width: 4px;
 }
-
 #actu-tracklist::-webkit-scrollbar-track {
   background: transparent;
 }
-
 #actu-tracklist::-webkit-scrollbar-thumb {
   background: var(--couleur-accent);
   border-radius: 2px;
 }
-
 #actu-tracklist::-webkit-scrollbar-thumb:hover {
   background: var(--couleur-texte);
 }
+
 /* Citation */
 #actu-citation {
   font-family: var(--police-titre), serif;
-  font-size: 2rem;
+  font-size: clamp(1.1rem, 3vw, 2rem);
   font-style: italic;
-  opacity: 1 !important;
-  color: var(--couleur-texte) !important;
+  opacity: 1;
+  color: var(--couleur-texte);
   line-height: 1.7;
   border: none;
   padding: 0;
@@ -620,33 +609,17 @@ blockquote{
   font-style: normal;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--couleur-accent) !important;
-  opacity: 1 !important;
+  color: var(--couleur-accent);
   font-weight: 600;
 }
 
-/* Responsive mobile */
-@media (max-width: 768px) {
-  #accueil {
-    padding: 7rem 1.5rem 2rem;
-  }
-
-  #hero-bas {
-    flex-direction: column;
-    gap: 2rem;
-  }
-
-  #actu-droite {
-    max-width: 100%;
-  }
-}
 
 /* =====================
    ANIMATION : FADE-IN
 ===================== */
 @keyframes apparition {
   from {
-    opacity: 0;  
+    opacity: 0;
     transform: translateY(30px);
   }
   to {
@@ -654,48 +627,19 @@ blockquote{
     transform: translateY(0);
   }
 }
- 
-#accueil p {
-  animation: apparition 1.2s ease forwards;
-  animation-delay: 0.4s; 
-}
 
-
-/* =====================
-   SECTIONS GÉNÉRALES
-===================== */
-section {
-  padding: 5rem;   
-  max-width: 1100px;
-  margin: auto; 
-}
-
-#bio {
-  background:none;   /* ← fond sombre semi-transparent */
-  backdrop-filter: blur(4px);        /* ← effet blur */
-  border-radius: 4px;
-  padding: 4rem;
-}
 
 /* =====================
    CITATION PRESSE
 ===================== */
-#bio blockquote {
+#bio blockquote,
+#musique blockquote {
   margin-top: 3rem;
   padding-left: 1.5rem;
   border-left: 3px solid var(--couleur-accent);
   font-family: var(--police-titre), serif;
   font-size: 1.4rem;
   font-style: italic;
-  opacity: 0.9;
-}
-#musique blockquote{
-  margin-top: 3rem;
-  padding-left: 1.5rem;
-  border-left: 3px solid var(--couleur-accent);
-  font-family: var(--police-titre), serif;
-  font-size: 1.4rem;
-  font-style: italic; 
   opacity: 0.9;
 }
 
@@ -711,18 +655,25 @@ section {
   border: 1px solid #2a2a2a;
   border-radius: 4px;
   padding: 2rem;
-  max-width: 900px; 
+  max-width: 900px;
+}
+
+#lecteur-pochette {
+  flex: 0 1 45%;
 }
 
 #lecteur-pochette img {
-  width: 500px;       
+  display: block;
+  width: 100%;
+  max-width: 500px;
   aspect-ratio: 1;
   object-fit: cover;
   border-radius: 2px;
 }
 
 #lecteur-contenu {
-  flex: 1; 
+  flex: 1;
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -762,15 +713,13 @@ section {
   transition: width 0.1s linear;
 }
 
-/* Temps */
 #lecteur-temps {
   display: flex;
-  justify-content: space-between; 
+  justify-content: space-between;
   font-size: 0.75rem;
   opacity: 0.6;
 }
 
-/* Boutons */
 #lecteur-boutons {
   display: flex;
   gap: 1rem;
@@ -791,10 +740,9 @@ section {
 
 #lecteur-boutons button:hover {
   background: var(--couleur-accent);
-  color: black;    
+  color: black;
 }
 
-/* Tracklist */
 #tracklist {
   list-style: none;
   display: flex;
@@ -814,11 +762,7 @@ section {
   gap: 0.8rem;
 }
 
-#tracklist li:hover {
-  opacity: 1;
-  color: var(--couleur-accent);
-}
-
+#tracklist li:hover,
 #tracklist li.active {
   opacity: 1;
   color: var(--couleur-accent);
@@ -829,11 +773,10 @@ section {
    DISCOGRAPHIE — GRILLE
 ===================== */
 .grille-disques {
-  display: grid;    
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(200px, 100%), 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin: 2rem 0;
 }
 
 .carte-album {
@@ -842,8 +785,7 @@ section {
   border-radius: 2px;
   transition: transform 0.3s ease, border-color 0.3s ease;
   cursor: pointer;
-  overflow: hidden;     
-  padding: 0;      
+  overflow: hidden;
 }
 
 .carte-album:hover {
@@ -856,10 +798,9 @@ section {
   font-size: 1.5rem;
   color: var(--couleur-accent);
   margin-bottom: 0.2rem;
-
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; 
+  text-overflow: ellipsis;
 }
 
 .carte-album span {
@@ -873,18 +814,14 @@ section {
 
 .carte-album a {
   text-decoration: none;
-  color: inherit;  
-  display: block; 
-}
-
-.carte-album a:visited{
-  border-color:darkcyan;
+  color: inherit;
+  display: block;
 }
 
 .carte-album img {
-  width: 100%;   
+  width: 100%;
   aspect-ratio: 1 / 1;
-  object-fit: cover; 
+  object-fit: cover;
   display: block;
   margin-bottom: 1rem;
   border-radius: 2px;
@@ -896,64 +833,57 @@ section {
 
 
 /* =====================
-   GALERIE— GRILLE
+   GALERIE — GRILLE
 ===================== */
 .grille-photos {
-  display: grid;       
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
   gap: 1.5rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem;     
+  margin: 2rem 0;
 }
 
-.grille-photos img{
+.grille-photos img {
   width: 100%;
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  display:block;
-  margin-bottom: 1rem;
+  display: block;
   border-radius: 2px;
   border: 3px solid #2a2a2a;
   filter: grayscale(30%);
-  transition: transform 0.3s ease, border-color 0.3s ease;
+  transition: transform 0.3s ease, filter 0.3s ease;
   cursor: pointer;
-  overflow: hidden;    
-  padding: 0; 
 }
+
 .grille-photos img:hover {
-   filter: grayscale(0%);
+  filter: grayscale(0%);
   transform: scale(1.02);
 }
+
+
 /* =====================
    LIGHTBOX
 ===================== */
 #lightbox {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   background: rgba(0, 0, 0, 0.92);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 500;
-  transition: opacity 0.3s ease;
-  opacity: 1;
 }
 
 #lightbox.lightbox-cachee {
- display: none;
+  display: none;
 }
 
 #lightbox-img {
-  max-width: 85vw; 
-  max-height: 85vh; 
-  object-fit: contain; 
+  max-width: 85vw;
+  max-height: 85vh;
+  object-fit: contain;
   border-radius: 2px;
 }
 
-/* Bouton fermer */
 #lightbox-fermer {
   position: absolute;
   top: 1.5rem;
@@ -969,43 +899,38 @@ section {
   transition: background 0.2s ease;
 }
 
-/* Boutons précédent / suivant */
+#lightbox-fermer:hover {
+  background: var(--couleur-accent);
+  color: black;
+}
+
 #lightbox-precedent,
 #lightbox-suivant {
   background: none;
   border: none;
   color: var(--couleur-texte);
-  font-size: 4rem;
+  font-size: clamp(2rem, 6vw, 4rem);
   cursor: pointer;
-  padding: 1rem;
+  padding: 0.5rem;
   opacity: 0.6;
   transition: opacity 0.2s ease;
   user-select: none;
 }
 
 #lightbox-precedent:hover,
-#lightbox-suivant:hover,
-#lightbox-fermer:hover {
+#lightbox-suivant:hover {
   opacity: 1;
-  background: none;
-}
-
-#lightbox-fermer:hover {
-  background: var(--couleur-accent);
-  color: black;
 }
 
 
 /* =====================
-   VIDEO
+   VIDÉO
 ===================== */
 .grille-video {
-  display: grid;       
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(400px, 100%), 1fr));
   gap: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2rem; 
-      
+  margin: 2rem 0;
 }
 
 .carte-video {
@@ -1014,23 +939,17 @@ section {
   gap: 0.8rem;
 }
 
-.carte-video iframe {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  border: 1px solid #2a2a2a;
-}
-
-.carte-video:hover iframe {
-  border-color: var(--couleur-accent);
-  transition: border-color 0.3s ease;
-}
-
+.carte-video iframe,
 .carte-video video {
   width: 100%;
   aspect-ratio: 16 / 9;
   border-radius: 4px;
   border: 1px solid #2a2a2a;
+  transition: border-color 0.3s ease;
+}
+
+.carte-video:hover iframe {
+  border-color: var(--couleur-accent);
 }
 
 .legende-video {
@@ -1043,11 +962,11 @@ section {
 
 
 /* =====================
-   LIVE — LAYOUT
+   LIVE
 ===================== */
 #live {
   max-width: 1600px;
-  padding: 5rem 4rem;
+  padding: clamp(1rem, 4vw, 4rem);
 }
 
 #live-layout {
@@ -1058,9 +977,9 @@ section {
 
 #live-banniere {
   position: relative;
-  width: 80%;
+  width: 100%;
   max-width: 900px;
-  height: 600px;           /* ← hauteur fixe panoramique */
+  height: clamp(250px, 50vw, 600px);
   margin: 0 auto 3rem;
   overflow: hidden;
   border-radius: 12px;
@@ -1070,60 +989,41 @@ section {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 70%;  /* ← centre sur le bas de la photo */
+  object-position: center 70%;
   filter: grayscale(20%);
   border-radius: 12px;
 }
 
-/* Supprime complètement le ::after */
-#live-banniere::after {
-  display: none;
-}
-
-/* Supprime l'overlay */
-#live-banniere-overlay {
-  display: none;
-}
-
 .live-intro {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(4rem, 5vw, 5rem);
+  font-size: clamp(2.5rem, 8vw, 5rem);
   text-align: center;
   color: var(--couleur-accent);
   margin-bottom: 3rem;
   letter-spacing: 0.15em;
 }
+
 #live-contenu {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 4rem;
+  padding: clamp(1rem, 4vw, 4rem);
 }
 
-/* Texte en 2 colonnes */
-#live-contenu > p {
-  column-count: 1;   /* ← plus de colonnes sur les p individuels */
-  background: none;
-  backdrop-filter: none;
-  padding: 0;
-}
-
-/* Colonnes sur le conteneur entier */
+/* 2 colonnes si la place le permet, sinon 1 — sans media query */
 #live-texte-colonnes {
-  column-count: 2;
+  columns: 2 22rem;
   column-gap: 4rem;
   column-fill: balance;
+  column-rule: 1px solid rgba(201, 168, 76, 0.2);
   line-height: 2;
   font-size: 1rem;
   text-align: justify;
-  background: none;
   backdrop-filter: blur(4px);
-  padding: 2rem;
+  padding: clamp(1rem, 3vw, 2rem);
   border-radius: 4px;
   margin-bottom: 2rem;
-  column-rule: 1px solid rgba(201, 168, 76, 0.2);
 }
 
-/* Les p à l'intérieur ne se coupent pas */
 #live-texte-colonnes p {
   break-inside: avoid;
   orphans: 3;
@@ -1132,133 +1032,109 @@ section {
   opacity: 0.85;
 }
 
-/* La citation italique sur toute la largeur */
-#live-contenu > i {
-  display: block;
-  text-align: center;
-  font-family: var(--police-titre), serif;
-  font-size: 2rem;
-  opacity: 0.7;
-  line-height: 1.8;
-  padding: 2rem 3rem;
-  border-top: 1px solid rgba(201, 168, 76, 0.3);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
-  margin: 2rem 0 3rem;
-  column-count: 1;
-}
-
-#live-contenu .carte-video {
-  margin-top: 2rem;
-  max-width: 100%;
-}
-
-#live-contenu .carte-video video {
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-radius: 4px;
-  border: 1px solid #2a2a2a;
-}
-
-/* Fond uniquement sur le texte */
+/* Fond flouté uniquement sur le texte */
 #live-contenu > p,
 #live-contenu > i,
 #live-contenu > .live-intro {
-  background: none;
   backdrop-filter: blur(4px);
   padding: 1rem 1.5rem;
   border-radius: 4px;
   margin-bottom: 1rem;
 }
 
-/* Pas de fond sur la vidéo et la timeline */
-#live-contenu .carte-video,
-#live-contenu .timeline,
-#live-contenu h3 {
-  background: none;
-  backdrop-filter: none;
+/* Citation italique pleine largeur */
+#live-contenu > i {
+  display: block;
+  text-align: center;
+  font-family: var(--police-titre), serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  opacity: 0.7;
+  line-height: 1.8;
+  padding: 1.5rem clamp(0.5rem, 3vw, 3rem);
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  margin: 2rem 0 3rem;
 }
-/* Responsive mobile */
-@media (max-width: 768px) {
-  #live-contenu > p {
-    columns: 1;  /* ← une seule colonne sur mobile */
-  }
-  #live-texte-colonnes {
-    column-count: 1;
-  }
+
+#live-contenu .carte-video {
+  margin-top: 2rem;
 }
+
 
 /* =====================
    TIMELINE
 ===================== */
-#dates{
-    max-width:900px;
-    margin:auto;
+#dates {
+  max-width: 900px;
+  margin: auto;
 }
 
-.timeline{
-    position:relative;
-    margin-top:1rem;
-    padding-left:40px;
+.timeline {
+  --retrait: 40px;          /* le point suit automatiquement ce retrait */
+  position: relative;
+  margin-top: 1rem;
+  padding-left: var(--retrait);
 }
 
-.timeline::before{
-    content:"";
-    position: absolute;
-    left:10px;
-    top:0;
-    bottom:0;
-    width:3px;
-    background:var(--couleur-accent);
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--couleur-accent);
 }
 
-.evenement{
-    position:relative;
-    margin-bottom:2rem;
+.evenement {
+  position: relative;
+  margin-bottom: 2rem;
 }
 
-.evenement::before{
-    content:"";
-    position:absolute;
-    left:-49px;
-    top:8px;
-    width:14px;
-    height:14px;
-    border-radius:50%;
-    background:var(--couleur-accent);
-    box-shadow:0 0 10px rgba(201,168,76,.6);
+/* Point centré sur la ligne (centre de la ligne = 11.5px, point = 14px) */
+.evenement::before {
+  content: "";
+  position: absolute;
+  left: calc(5px - var(--retrait));
+  top: 8px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--couleur-accent);
+  box-shadow: 0 0 10px rgba(201, 168, 76, .6);
 }
 
-.annee{
-    font-family:var(--police-titre), serif;
-    color:var(--couleur-accent);
-    font-size:2rem;
-    font-weight: 700;
-    margin-bottom:.2rem;
+.annee {
+  font-family: var(--police-titre), serif;
+  color: var(--couleur-accent);
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: .2rem;
 }
 
-.contenu{
-    background-color: var(--couleur-tertiaire);
-    border:3px solid var(--couleur-accent);
-    opacity: 0.8;
-    padding:1.2rem 1.5rem;
-    transition:.3s;
+.contenu {
+  background-color: var(--couleur-tertiaire);
+  border: 3px solid var(--couleur-accent);
+  opacity: 0.8;
+  padding: 1.2rem 1.5rem;
+  transition: .3s;
 }
 
-.contenu:hover{
-    transform:translateX(8px);
-    background:#181818;
+.contenu:hover {
+  transform: translateX(8px);
+  background: #181818;
 }
 
-.contenu h3{
-    font-size:2rem;
-    font-weight: 700;
-    color:var(--couleur-accent);
-    margin-bottom:.4rem;
+.contenu h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--couleur-accent);
+  margin-bottom: .4rem;
 }
 
-.contenu p{
-    color:var(--couleur-texte);
-    opacity:.8;
+.contenu p {
+  color: var(--couleur-texte);
+  opacity: .8;
 }
 
 
@@ -1271,10 +1147,9 @@ section {
   font-size: 1.1rem;
 }
 
-/* Réseaux sociaux */
 #reseaux {
   display: flex;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
   gap: 1rem;
   margin-bottom: 3rem;
 }
@@ -1294,10 +1169,9 @@ section {
 
 .lien-reseau:hover {
   background: var(--couleur-accent);
-  color: var(--couleur-fond); 
+  color: var(--couleur-fond);
 }
 
-/* Formulaire */
 #form-contact {
   display: flex;
   flex-direction: column;
@@ -1327,64 +1201,47 @@ section {
   padding: 0.8rem 1rem;
   border-radius: 2px;
   font-family: var(--police-texte), sans-serif;
-  font-size: 1rem;
+  font-size: 1rem;           /* ≥ 16px : évite le zoom auto sur iPhone */
   transition: border-color 0.3s ease;
   outline: none;
+  width: 100%;
 }
 
 .champ input:focus,
 .champ select:focus,
 .champ textarea:focus {
-  border-color: var(--couleur-accent); 
+  border-color: var(--couleur-accent);
 }
 
-.champ textarea {
-  resize: vertical;   
-}
-
-/* Scrollbar du textarea */
-#message::-webkit-scrollbar {
-  width: 12px; 
-}
-
-#message::-webkit-scrollbar-track {
-  background: var(--couleur-secondaire);
-}
-
-#message::-webkit-scrollbar-thumb {
-  background: var(--couleur-tertiaire);
-  border: 2px solid var(--couleur-accent);
-  border-radius: 0;
-}
-
-#message::-webkit-scrollbar-thumb:hover {
-  background: var(--couleur-accent);
-}
-
-/* Coin de redimensionnement du textarea */
-#message::-webkit-resizer {
-  background-color: var(--couleur-tertiaire);
-  border: 2px solid var(--couleur-accent);
-  border-radius: 0;
-}
-
-/* Cacher le resizer par défaut */
+/* Textarea */
 #message {
-  resize: none;  /* ← désactive le redimensionnement de base */
+  resize: none;
 }
 
-/* Afficher le resizer seulement quand la classe est active */
 #message.resizable {
   resize: vertical;
 }
 
-#message.resizable::-webkit-resizer {
+#message::-webkit-scrollbar {
+  width: 12px;
+}
+#message::-webkit-scrollbar-track {
+  background: var(--couleur-secondaire);
+}
+#message::-webkit-scrollbar-thumb {
+  background: var(--couleur-tertiaire);
+  border: 2px solid var(--couleur-accent);
+}
+#message::-webkit-scrollbar-thumb:hover {
+  background: var(--couleur-accent);
+}
+#message::-webkit-resizer {
   background-color: var(--couleur-tertiaire);
   border: 2px solid var(--couleur-accent);
 }
 
 #btn-envoyer {
-  align-self: flex-start; 
+  align-self: flex-start;
   background: var(--couleur-accent);
   color: #000;
   border: 2px solid transparent;
@@ -1404,22 +1261,20 @@ section {
   border-color: #000;
 }
 
-#message-formulaire{
-  margin-top:20px;
-  text-align:center;
-  font-size:1rem;
-  font-weight:600;
+#message-formulaire {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
   display: none;
 }
 
-.success{
-
-  color:#5bc75b;
+.success {
+  color: #5bc75b;
 }
 
-.error{
-
-  color:#ff5d5d;
+.error {
+  color: #ff5d5d;
 }
 
 .champ-cache {
@@ -1440,13 +1295,11 @@ section {
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
-
 .apparait.visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* Délais en cascade pour les grilles */
 .apparait:nth-child(2) { transition-delay: 0.1s; }
 .apparait:nth-child(3) { transition-delay: 0.2s; }
 .apparait:nth-child(4) { transition-delay: 0.3s; }
@@ -1456,195 +1309,25 @@ section {
 
 
 /* =====================
-   DESKTOP LARGE
-===================== */
-@media (min-width: 1024px) {
-
-  section {
-    max-width: 1400px;
-    padding: 5rem 6rem;
-  }
-
-  #bio p,
-  #musique p,
-  #live p {
-    font-size: 1.1rem !important;
-    line-height: 2;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    opacity: 0.9;
-  }
-
-  #bio i,
-  #musique i,
-  #live i{
-    display: block;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    font-size: 1rem !important;
-    line-height: 1.8;
-    opacity: 1;
-    font-style: italic;
-  }
-
-  #bio blockquote,
-  #musique blockquote {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 600px;
-    text-align: center;
-    border-left: none;
-    border-top: 1px solid var(--couleur-accent);
-    border-bottom: 1px solid var(--couleur-accent);
-    padding: 1.5rem 0;
-    font-size: 1.3rem;
-  }
-
-  #contact p {
-    font-size: 1.1rem !important;
-  }
-
-  .contenu p {
-    font-size: 1rem !important;
-  }
-}
-
-
-/* =====================
-   RESPONSIVE MOBILE
-===================== */
-@media (max-width: 768px) {
-
-  /* --- NAVIGATION --- */
-  nav {
-    padding: 1rem;
-    justify-content: center;
-  }
-
-  nav ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  nav a {
-    font-size: 0.7rem; 
-    letter-spacing: 0.08em;
-  }
-
-  /* --- HERO --- */
-  #accueil {
-    padding: 7rem 1.5rem 2rem;
-    justify-content: space-between;
-  }
-
-  #hero-bas {
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-bottom: 2rem;
-  }
-
-  #actu-gauche,
-  #actu-droite {
-    width: 100%;
-  }
-
-  #actu-desc,
-  #actu-gauche i {
-    display: none;
-  }
-  /* Citation plus petite */
-  #actu-citation {
-    font-size: 0.85rem;
-  }
-
-  /* --- SECTIONS GÉNÉRALES --- */
-  section {
-    padding: 3rem 1.5rem;
-  }
-
-  /* --- LECTEUR AUDIO --- */
-  #lecteur-anewera {
-    flex-direction: column; 
-    padding: 1rem;
-  }
-
-  #lecteur-pochette img {
-    width: 100%; 
-    max-width: 300px;
-    margin: 0 auto;
-  }
-
-  /* --- GALERIE PHOTOS --- */
-  .grille-photos {
-    grid-template-columns: 1fr; 
-  }
-
-  .grille-photos img {
-    margin-bottom: 0;
-  }
-
-  /* --- DISCOGRAPHIE --- */
-  .grille-disques {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  }
-
-  /* --- VIDÉOS --- */
-  .grille-video {
-    grid-template-columns: 1fr;
-  }
-
-  /* --- TIMELINE --- */
-  .timeline {
-    padding-left: 25px;
-  }
-
-  .contenu h3 {
-    font-size: 1.2rem;
-  }
-
-  /* --- CONTACT --- */
-  #reseaux {
-    justify-content: center;
-  }
-
-  /* Désactive les animations au scroll sur mobile */
-  .apparait {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-    transition: none !important;
-  }
-
-  .apparait.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-  }
-}
-
-
-/* =====================
    FOOTER
 ===================== */
 footer {
+  position: relative;
+  z-index: 1;
   text-align: center;
   padding: 2rem;
   border-top: 1px solid #1a1a1a;
   font-size: 0.85rem;
   opacity: 0.5;
   width: 100%;
-  position: relative;
-  z-index: 1;
   background-color: var(--couleur-fond);
 }
 
 .footer-nav {
-  position: static;
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1rem 2rem;
   margin-top: 0.8rem;
   list-style: none;
 }
@@ -1677,12 +1360,12 @@ footer {
 #mentions {
   max-width: 800px;
   margin: 0 auto;
-  padding: 6rem 2rem 6rem;
+  padding: 6rem 2rem;
 }
 
 #mentions h1 {
   font-family: var(--police-titre), serif;
-  font-size: 3rem;
+  font-size: clamp(2rem, 6vw, 3rem);
   color: var(--couleur-accent);
   margin-bottom: 3rem;
   animation: none;
@@ -1703,6 +1386,7 @@ footer {
   opacity: 0.75;
   line-height: 1.8;
   margin-bottom: 0.8rem;
+  overflow-wrap: break-word;
 }
 
 .mention-bloc a {
@@ -1724,7 +1408,191 @@ footer {
   opacity: 0.7;
 }
 
-html {
-  scroll-padding-top: 100px;
-  scroll-behavior: smooth;
+
+/* =======================================
+   RESPONSIVE — tous les media queries
+========================================== */
+
+/* ---------- DESKTOP LARGE (≥ 1024px) ---------- */
+@media (min-width: 1024px) {
+
+  section {
+    max-width: 1400px;
+    padding: 5rem 6rem;
+  }
+
+  #bio p,
+  #musique p,
+  #live p {
+    font-size: 1.1rem;
+    line-height: 2;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    opacity: 0.9;
+  }
+
+  #bio i,
+  #musique i,
+  #live i {
+    display: block;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1rem;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  #bio blockquote,
+  #musique blockquote {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 600px;
+    text-align: center;
+    border-left: none;
+    border-top: 1px solid var(--couleur-accent);
+    border-bottom: 1px solid var(--couleur-accent);
+    padding: 1.5rem 0;
+    font-size: 1.3rem;
+  }
+}
+
+/* ---------- TABLETTE (≤ 1023px) ---------- */
+@media (max-width: 1023px) {
+
+  #hero-bas {
+    flex-direction: column;
+  }
+
+  #actu-gauche,
+  #actu-droite {
+    flex: none;
+    width: 100%;
+  }
+}
+
+/* ---------- LECTEUR A NEW ERA empilé (≤ 900px) ---------- */
+@media (max-width: 900px) {
+
+  #lecteur-anewera {
+    flex-direction: column;
+  }
+
+  #lecteur-pochette {
+    flex: none;
+  }
+
+  #lecteur-pochette img {
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+
+/* ---------- MOBILE (≤ 768px) ---------- */
+@media (max-width: 768px) {
+
+  /* Header */
+  #header-principal {
+    padding: 0.8rem 1rem 0;
+  }
+
+  #header-nav {
+    display: none;
+  }
+
+  /* Hero */
+  #accueil {
+    padding: 6rem 1.5rem 2rem;
+    gap: 1rem;
+  }
+
+  #hero-centre {
+    flex: 0 0 auto;
+  }
+
+  #hero-bas {
+    gap: 1.5rem;
+    padding: 1rem 0 2rem;
+  }
+
+  #actu-desc,
+  #actu-gauche i {
+    display: none;
+  }
+
+  /* Sections */
+  section {
+    padding: 3rem 1.5rem;
+  }
+
+  #bio {
+    padding: 3rem 1.5rem;
+  }
+
+  #bio p {
+    max-width: 100%;
+    text-align: left;
+  }
+
+  #bio blockquote,
+  #musique blockquote {
+    font-size: 1.1rem;
+    padding: 1rem;
+  }
+
+  /* Lecteur A New Era */
+  #lecteur-anewera {
+    padding: 1rem;
+  }
+
+  /* Discographie */
+  .grille-disques {
+    grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+  }
+
+  /* Timeline */
+  .timeline {
+    --retrait: 25px;
+  }
+
+  .annee {
+    font-size: 1.5rem;
+  }
+
+  .contenu h3 {
+    font-size: 1.2rem;
+  }
+
+  /* Contact */
+  #reseaux {
+    justify-content: center;
+  }
+
+  /* Pas d'animation au scroll sur mobile */
+  .apparait,
+  .apparait.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ---------- PETIT MOBILE (≤ 600px) ---------- */
+@media (max-width: 600px) {
+
+  #actu-lecteur {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #actu-pochette {
+    width: 100%;
+    max-width: 260px;
+  }
+
+  #actu-lecteur-contenu {
+    width: 100%;
+  }
 }
