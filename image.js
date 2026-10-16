@@ -51,13 +51,17 @@ if (heroBtn) {
 // LECTEUR EXTRAITS CINÉMA
 // =====================
 
-// ← Tu rempliras les fichiers audio quand Mazette te les enverra
 const extraits = [
-    { numero: "01", titre: "Extrait 1", ambiance: "Mélancolie · Tension", fichier: "" },
-    { numero: "02", titre: "Extrait 2", ambiance: "Atmosphère · Minimaliste", fichier: "" },
-    { numero: "03", titre: "Extrait 3", ambiance: "Épique · Électronique", fichier: "" },
-    { numero: "04", titre: "Extrait 4", ambiance: "Cinématique · Sombre", fichier: "" },
-    { numero: "05", titre: "Extrait 5", ambiance: "Hybride · Expérimental", fichier: "" },
+    { numero: "01", titre: "Médusa", ambiance: "Mélancolie · Tension",
+        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792158179/Mazette_LES_BELLES_CHOSES_144bpm_Em_30sec.wav" },
+    { numero: "02", titre: "Extrait FILM TENSION", ambiance: "Atmosphère · Tension",
+        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792159942/MUSIQUE_FILM_TENSION.mp3" },
+    { numero: "03", titre: "Extrait FILM EMOTION", ambiance: "Épique · Électronique",
+        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792160441/MUSIQUE_FILM_EMOTION.mp3" },
+    { numero: "04", titre: "Extrait TERROR 127bpm", ambiance: "Cinématique · Sombre",
+        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792160541/Mazette_Terror_127bpm_D.mp3" },
+    { numero: "05", titre: "RévélationBeatz 91bpm", ambiance: "Hybride · Expérimental",
+        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792160646/Mazette_RevelationBeatz_91bpm_Cm.wav" },
 ];
 
 const extraitsAudio    = document.getElementById("extraits-audio");
