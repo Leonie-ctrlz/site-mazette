@@ -319,6 +319,6 @@ document.querySelectorAll(".apparait").forEach(function(el) {
 
 window.addEventListener("beforeunload", function() {
   localStorage.setItem("mazette-piste", pisteEnCours);
-  localStorage.setItem("mazette-temps", audio.currentTime);
-  localStorage.setItem("mazette-playing", !audio.paused);
+  localStorage.setItem("mazette-temps", actu.audio.currentTime);
+  localStorage.setItem("mazette-playing", actu.audio.paused);
 });

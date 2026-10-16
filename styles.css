@@ -9,6 +9,7 @@
   --couleur-secondaire: #4e4e4e;  /* Gris très sombre */
   --couleur-tertiaire: #488e97;
   --police-titre: 'Cormorant Garamond', serif;  /* Élégant */
+  --police-titre-h2: 'Bebas Neue', sans-serif;
   --police-texte: 'Inter', sans-serif;            
 }
 
@@ -43,23 +44,24 @@ footer {
    TYPOGRAPHIE
 ===================== */
 h1 {
-  font-family: var(--police-titre), serif;
-  font-size: clamp(3rem, 10vw, 8rem); /* clamp : min, préféré, max */
-  font-weight: 300;
-  letter-spacing: 0.3em;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(5rem, 15vw, 14rem);  /* ← très grand */
+  font-weight: 400;
+  letter-spacing: 0.1em;
   color: var(--couleur-accent);
-  animation: apparition 1.2s ease forwards; 
+  animation: apparition 1.2s ease forwards;
 }
 h1~p{
   color: var(--couleur-texte);
 }
 
 h2 {
-  font-family: var(--police-titre), serif;
-  font-size: 3rem;
-  font-weight: 900;
+  font-family: var(--police-titre-h2), sans-serif;
+  font-size: clamp(2.5rem, 5vw, 5rem);  /* ← plus grand */
+  font-weight: 400;   /* ← Bebas Neue n'a qu'un seul poids */
   color: var(--couleur-accent);
   margin-bottom: 2rem;
+  letter-spacing: 0.1em;
 }
 
 h3 {
@@ -284,9 +286,9 @@ blockquote{
 }
 
 #menu-lateral nav a {
-  font-family: var(--police-titre), serif;
+  font-family: 'Bebas Neue', sans-serif;
   font-size: clamp(2rem, 3vw, 2.8rem);
-  font-weight: 300;
+  font-weight: 400;
   color: var(--couleur-texte);
   text-decoration: none;
   letter-spacing: 0.05em;
@@ -666,6 +668,13 @@ section {
   padding: 5rem;   
   max-width: 1100px;
   margin: auto; 
+}
+
+#bio {
+  background:none;   /* ← fond sombre semi-transparent */
+  backdrop-filter: blur(4px);        /* ← effet blur */
+  border-radius: 4px;
+  padding: 4rem;
 }
 
 /* =====================
@@ -1055,7 +1064,6 @@ section {
   margin: 0 auto 3rem;
   overflow: hidden;
   border-radius: 12px;
-  overflow: hidden;
 }
 
 #live-banniere img {
@@ -1078,19 +1086,17 @@ section {
 }
 
 .live-intro {
-  column-count: 1 !important;  /* ← pleine largeur */
-  font-family: var(--police-titre), serif;
-  font-size: 1.3rem !important;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem, 5vw, 5rem);
   text-align: center;
-  margin-bottom: 2rem !important;
-  opacity: 0.9;
+  color: var(--couleur-accent);
+  margin-bottom: 3rem;
+  letter-spacing: 0.15em;
 }
 #live-contenu {
   max-width: 1100px;
   margin: 0 auto;
   padding: 4rem;
-  background: none;
-  border-radius: 4px;
 }
 
 /* Texte en 2 colonnes */
@@ -1104,16 +1110,17 @@ section {
 /* Colonnes sur le conteneur entier */
 #live-texte-colonnes {
   column-count: 2;
-  column-gap: 3rem;
+  column-gap: 4rem;
   column-fill: balance;
   line-height: 2;
   font-size: 1rem;
   text-align: justify;
-  background: rgba(0, 0, 0, 0.6);
+  background: none;
   backdrop-filter: blur(4px);
   padding: 2rem;
   border-radius: 4px;
   margin-bottom: 2rem;
+  column-rule: 1px solid rgba(201, 168, 76, 0.2);
 }
 
 /* Les p à l'intérieur ne se coupent pas */
@@ -1122,19 +1129,22 @@ section {
   orphans: 3;
   widows: 3;
   margin-bottom: 1rem;
+  opacity: 0.85;
 }
 
 /* La citation italique sur toute la largeur */
 #live-contenu > i {
-  columns: 1;              /* ← pas de colonnes pour la citation */
   display: block;
   text-align: center;
+  font-family: var(--police-titre), serif;
+  font-size: 2rem;
   opacity: 0.7;
-  font-size: 1rem;
-  padding: 1.5rem 0;
-  border-top: 1px solid rgba(255,255,255,0.1);
-  border-bottom: 1px solid rgba(255,255,255,0.1);
-  margin: 1rem 0 3rem;
+  line-height: 1.8;
+  padding: 2rem 3rem;
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  margin: 2rem 0 3rem;
+  column-count: 1;
 }
 
 #live-contenu .carte-video {
@@ -1153,7 +1163,7 @@ section {
 #live-contenu > p,
 #live-contenu > i,
 #live-contenu > .live-intro {
-  background: rgba(0, 0, 0, 0.6);
+  background: none;
   backdrop-filter: blur(4px);
   padding: 1rem 1.5rem;
   border-radius: 4px;

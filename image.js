@@ -34,98 +34,17 @@ document.addEventListener("keydown", function(e) {
 
 
 // =====================
-// MINI LECTEUR — A NEW ERA
+// SCROLL-BAS
 // =====================
-const pistesSaved = [
-    { numero: "01", titre: "Story",                 fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628334/1_-_Story_-_Mazette.wav" },
-    { numero: "02", titre: "All Sens",              fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/2_-_All_Sens_-_Mazette.wav" },
-    { numero: "03", titre: "L'or du commun",        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628339/3_-_L_or_du_commun_-_Mazette.wav" },
-    { numero: "04", titre: "Shan",                  fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/4_-_Shan_-_Mazette.wav" },
-    { numero: "05", titre: "A New Era",             fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/5_-_A_new_era_-_Mazette.wav" },
-    { numero: "06", titre: "Silent",                fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628336/6_-_Silent_-_Mazette.wav" },
-    { numero: "07", titre: "La symphonie de l'eau", fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628332/7_-_La_symphonie_de_l_eau_-_Mazette.wav" },
-    { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/8_-_Contre_ton_%C3%A9paule_-_Mazette.wav" },
-];
-
-const miniLecteur  = document.getElementById("mini-lecteur");
-const miniAudio    = document.getElementById("mini-audio");
-const miniPlay     = document.getElementById("mini-play");
-const miniSuivant  = document.getElementById("mini-suivant");
-const miniPrecedent = document.getElementById("mini-precedent");
-const miniTitre    = document.getElementById("mini-titre");
-const miniNumero   = document.getElementById("mini-numero");
-const miniBarre    = document.getElementById("mini-barre");
-
-let miniPisteEnCours = 0;
-
-// Reprend depuis localStorage si une piste était en cours
-const savedPiste   = localStorage.getItem("mazette-piste");
-const savedTemps   = localStorage.getItem("mazette-temps");
-const savedPlaying = localStorage.getItem("mazette-playing");
-
-if (savedPiste) {
-    miniPisteEnCours = parseInt(savedPiste);
+const heroBtn = document.getElementById("hero-btn");
+if (heroBtn) {
+    heroBtn.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.getElementById("apropos-image").scrollIntoView({
+            behavior: "smooth"
+        });
+    });
 }
-
-function miniChargerPiste() {
-    const piste = pistesSaved[miniPisteEnCours];
-    miniAudio.src              = piste.fichier;
-    miniTitre.textContent      = piste.titre;
-    miniNumero.textContent     = piste.numero;
-    miniLecteur.classList.remove("mini-cache"); // ← toujours visible
-}
-
-// Initialisation — charge toujours la piste
-miniChargerPiste();
-
-// Reprend au bon endroit seulement si musique était en cours
-if (savedTemps) miniAudio.currentTime = parseFloat(savedTemps);
-if (savedPlaying === "true") {
-    miniAudio.play();
-    miniPlay.textContent = "⏸";
-}
-
-// Play / Pause
-miniPlay.addEventListener("click", function() {
-    if (miniAudio.paused) {
-        miniAudio.play();
-        miniPlay.textContent = "⏸";
-    } else {
-        miniAudio.pause();
-        miniPlay.textContent = "▶";
-    }
-});
-
-// Suivant
-miniSuivant.addEventListener("click", function() {
-    miniPisteEnCours = (miniPisteEnCours + 1) % pistesSaved.length;
-    miniChargerPiste();
-    miniAudio.play();
-    miniPlay.textContent = "⏸";
-});
-
-// Précédent
-miniPrecedent.addEventListener("click", function() {
-    miniPisteEnCours = (miniPisteEnCours - 1 + pistesSaved.length) % pistesSaved.length;
-    miniChargerPiste();
-    miniAudio.play();
-    miniPlay.textContent = "⏸";
-});
-
-// Barre de progression
-miniAudio.addEventListener("timeupdate", function() {
-    const pct = (miniAudio.currentTime / miniAudio.duration) * 100;
-    miniBarre.style.width = pct + "%";
-});
-
-document.getElementById("mini-barre-container").addEventListener("click", function(e) {
-    miniAudio.currentTime = (e.offsetX / this.offsetWidth) * miniAudio.duration;
-});
-
-// Piste suivante auto
-miniAudio.addEventListener("ended", function() {
-    miniSuivant.click();
-});
 
 
 // =====================
@@ -233,3 +152,28 @@ document.getElementById("extraits-barre-container").addEventListener("click", fu
 
 // Initialisation
 chargerExtrait();
+
+// =====================
+// FILTRES RÉALISATIONS
+// =====================
+const filtres = document.querySelectorAll(".filtre");
+const projets = document.querySelectorAll(".carte-projet");
+
+if (filtres.length > 0) {
+    filtres.forEach(function(btn) {
+        btn.addEventListener("click", function() {
+            filtres.forEach(function(f) { f.classList.remove("actif"); });
+            btn.classList.add("actif");
+
+            const filtre = btn.dataset.filtre;
+
+            projets.forEach(function(projet) {
+                if (filtre === "tous" || projet.dataset.categorie === filtre) {
+                    projet.classList.remove("cachee");
+                } else {
+                    projet.classList.add("cachee");
+                }
+            });
+        });
+    });
+}

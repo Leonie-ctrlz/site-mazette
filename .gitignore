@@ -1,5 +1,6 @@
 # Fichiers audio
 audio/
+extrait/
 
 # Images
 image/
@@ -11,3 +12,6 @@ video/
 # Fichier de fond
 fond.jpg
 fond2.jpg
+
+#font
+fonts/

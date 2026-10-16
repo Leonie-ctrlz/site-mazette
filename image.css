@@ -9,6 +9,7 @@
     --couleur-third: #edab6a;
     --couleur-tertiaire: #488e97;
     --police-titre: 'Cormorant Garamond', serif;  /* Élégant */
+    --police-titre-h2: 'Bebas Neue', sans-serif;
     --police-texte: 'Inter', sans-serif;
 }
 
@@ -20,6 +21,17 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body.page-image {
+    background: linear-gradient(
+            to bottom,
+            #1a1a1a 0%,
+            #0a0a0a 40%,
+            #0a0a0a 100%) fixed #0a0a0a;
+}
+body.page-image::before {
+    display: none;
 }
 
 
@@ -210,7 +222,7 @@
 }
 
 #hero-titre {
-    font-family: var(--police-titre), serif;
+    font-family: var(--police-titre-h2), serif;
     font-size: clamp(3.5rem, 8vw, 7rem);
     font-weight: 900;
     color: var(--couleur-texte);
@@ -235,7 +247,7 @@
 }
 
 #hero-soustitre {
-    font-family: var(--police-texte), sans-serif;
+    font-family: var(--police-titre-h2), sans-serif;
     font-size: 1rem;
     color: var(--couleur-texte);
     opacity: 0;
@@ -304,7 +316,7 @@
 }
 
 #mini-titre {
-    font-family: var(--police-titre), serif;
+    font-family: var(--police-titre-h2), serif;
     font-size: 1.1rem;
     color: var(--couleur-accent);
 }
@@ -405,6 +417,7 @@
     display: flex;
     align-items: baseline;
     gap: 0.8rem;
+    font-family: var(--police-titre-h2), serif;
 }
 
 #extraits-numero {
@@ -415,7 +428,7 @@
 }
 
 #extraits-titre {
-    font-family: var(--police-titre), serif;
+    font-family: var(--police-titre-h2), serif;
     font-size: 1.4rem;
     color: var(--couleur-accent);
 }
@@ -522,4 +535,173 @@
     margin-top: 1.5rem;
     border-radius: 2px;
     border: 1px solid #2a2a2a;
+}
+
+/* =====================
+   RÉALISATIONS
+===================== */
+#realisations {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Titre centré avec lignes */
+#realisations-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.realisations-ligne {
+    flex: 1;
+    height: 1px;
+    background: var(--couleur-accent);
+    opacity: 0.4;
+}
+
+#realisations-header h2 {
+    white-space: nowrap;
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: 0;
+}
+
+#realisations-soustitre {
+    text-align: center;
+    opacity: 1;
+    font-size: 0.95rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Filtres */
+#filtres {
+    display: flex;
+    gap: 0.8rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+
+.filtre {
+    background: none;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--couleur-texte);
+    padding: 0.4rem 1.2rem;
+    border-radius: 99px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    font-family: var(--police-texte), sans-serif;
+}
+
+.filtre:hover {
+    border-color: var(--couleur-accent);
+    color: var(--couleur-accent);
+}
+
+.filtre.actif {
+    background: var(--couleur-accent);
+    border-color: var(--couleur-accent);
+    color: #000;
+}
+
+/* Cartes projets */
+#liste-projets {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.carte-projet {
+    display: flex;
+    gap: 1.5rem;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid #1a1a1a;
+    border-radius: 4px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.carte-projet:hover {
+    border-color: var(--couleur-accent);
+}
+
+/* Vidéo à gauche */
+.projet-media {
+    flex-shrink: 0;
+    width: 280px;
+    aspect-ratio: 16 / 9;
+    position: relative;
+}
+
+.projet-media iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+}
+
+/* Infos à droite */
+.projet-infos {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.projet-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--couleur-accent);
+    opacity: 0.8;
+}
+
+.projet-infos h3 {
+    font-family: var(--police-titre), serif;
+    font-size: 1.5rem;
+    color: var(--couleur-texte);
+    margin-bottom: 0;
+}
+
+.projet-infos p {
+    font-size: 0.9rem;
+    opacity: 0.65;
+    line-height: 1.7;
+}
+
+.projet-btn {
+    display: inline-block;
+    color: var(--couleur-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    align-self: flex-start;
+    margin-top: 0.5rem;
+}
+
+.projet-btn:hover {
+    opacity: 0.7;
+    transform: translateX(4px);
+}
+
+/* Carte cachée par le filtre */
+.carte-projet.cachee {
+    display: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .carte-projet {
+        flex-direction: column;
+    }
+
+    .projet-media {
+        width: 100%;
+    }
 }
