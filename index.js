@@ -23,7 +23,6 @@ window.addEventListener("scroll", function() {
   }
 
   // Nav cachée quand on scrolle vers le bas
-  const headerNav = document.getElementById("header-nav");
   if (scrollActuel > dernierScroll && scrollActuel > 100) {
     headerNav.classList.add("nav-cachee");
   } else {
@@ -71,224 +70,251 @@ document.querySelectorAll("#menu-lateral nav a").forEach(function(lien) {
 
 
 // =====================
-// 1. LES PISTES DE L'EP
-// =====================
-const pistes = [
-  { numero: "01", titre: "Story",                 fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628334/1_-_Story_-_Mazette.wav" },
-  { numero: "02", titre: "All Sens",              fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/2_-_All_Sens_-_Mazette.wav" },
-  { numero: "03", titre: "L'or du commun",        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628339/3_-_L_or_du_commun_-_Mazette.wav" },
-  { numero: "04", titre: "Shan",                  fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/4_-_Shan_-_Mazette.wav" },
-  { numero: "05", titre: "A New Era",             fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/5_-_A_new_era_-_Mazette.wav" },
-  { numero: "06", titre: "Silent",                fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628336/6_-_Silent_-_Mazette.wav" },
-  { numero: "07", titre: "La symphonie de l'eau", fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628332/7_-_La_symphonie_de_l_eau_-_Mazette.wav" },
-  { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/8_-_Contre_ton_épaule_-_Mazette.wav" },
-];
-
-// =====================
 // LECTEUR HERO — ACTU
+// (uniquement sur la page qui contient le lecteur)
 // =====================
-const actu = {
-  audio    : document.getElementById("audio"),
-  play     : document.getElementById("actu-play"),
-  suivant  : document.getElementById("actu-suivant"),
-  precedent: document.getElementById("actu-precedent"),
-  nom      : document.getElementById("actu-nom"),
-  numero   : document.getElementById("actu-numero"),
-  barre    : document.getElementById("actu-barre"),
-  actuel   : document.getElementById("actu-temps-actuel"),
-  total    : document.getElementById("actu-temps-total"),
-  tracklist: document.getElementById("actu-tracklist"),
-};
+if (document.getElementById("actu-lecteur")) {
 
-let pisteEnCours = 0;
+  const pistes = [
+    { numero: "01", titre: "Story",                 fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628334/1_-_Story_-_Mazette.wav" },
+    { numero: "02", titre: "All Sens",              fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/2_-_All_Sens_-_Mazette.wav" },
+    { numero: "03", titre: "L'or du commun",        fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628339/3_-_L_or_du_commun_-_Mazette.wav" },
+    { numero: "04", titre: "Shan",                  fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/4_-_Shan_-_Mazette.wav" },
+    { numero: "05", titre: "A New Era",             fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628335/5_-_A_new_era_-_Mazette.wav" },
+    { numero: "06", titre: "Silent",                fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628336/6_-_Silent_-_Mazette.wav" },
+    { numero: "07", titre: "La symphonie de l'eau", fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628332/7_-_La_symphonie_de_l_eau_-_Mazette.wav" },
+    { numero: "08", titre: "Contre ton épaule",     fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1786628338/8_-_Contre_ton_épaule_-_Mazette.wav" },
+  ];
 
-pistes.forEach(function(piste, index) {
-  const li = document.createElement("li");
-  li.innerHTML = "<span>" + piste.numero + "</span> " + piste.titre;
-  li.addEventListener("click", function() {
-    pisteEnCours = index;
+  const actu = {
+    audio    : document.getElementById("audio"),
+    play     : document.getElementById("actu-play"),
+    suivant  : document.getElementById("actu-suivant"),
+    precedent: document.getElementById("actu-precedent"),
+    nom      : document.getElementById("actu-nom"),
+    numero   : document.getElementById("actu-numero"),
+    barre    : document.getElementById("actu-barre"),
+    actuel   : document.getElementById("actu-temps-actuel"),
+    total    : document.getElementById("actu-temps-total"),
+    tracklist: document.getElementById("actu-tracklist"),
+  };
+
+  let pisteEnCours = 0;
+
+  pistes.forEach(function(piste, index) {
+    const li = document.createElement("li");
+    li.innerHTML = "<span>" + piste.numero + "</span> " + piste.titre;
+    li.addEventListener("click", function() {
+      pisteEnCours = index;
+      chargerPiste();
+      actu.audio.play();
+      actu.play.textContent = "⏸";
+    });
+    actu.tracklist.appendChild(li);
+  });
+
+  function chargerPiste() {
+    const piste = pistes[pisteEnCours];
+    actu.nom.textContent    = piste.titre;
+    actu.numero.textContent = piste.numero;
+    actu.audio.src          = piste.fichier;
+
+    document.querySelectorAll("#actu-tracklist li").forEach(function(li) {
+      li.classList.remove("active");
+    });
+    document.querySelectorAll("#actu-tracklist li")[pisteEnCours].classList.add("active");
+  }
+
+  actu.play.addEventListener("click", function() {
+    if (actu.audio.paused) {
+      if (!actu.audio.src) chargerPiste();
+      actu.audio.play();
+      actu.play.textContent = "⏸";
+    } else {
+      actu.audio.pause();
+      actu.play.textContent = "▶";
+    }
+  });
+
+  actu.suivant.addEventListener("click", function() {
+    pisteEnCours = (pisteEnCours + 1) % pistes.length;
     chargerPiste();
     actu.audio.play();
     actu.play.textContent = "⏸";
   });
-  actu.tracklist.appendChild(li);
-});
 
-function chargerPiste() {
-  const piste = pistes[pisteEnCours];
-  actu.nom.textContent    = piste.titre;
-  actu.numero.textContent = piste.numero;
-  actu.audio.src          = piste.fichier;
-
-  document.querySelectorAll("#actu-tracklist li").forEach(function(li) {
-    li.classList.remove("active");
-  });
-  document.querySelectorAll("#actu-tracklist li")[pisteEnCours].classList.add("active");
-}
-
-actu.play.addEventListener("click", function() {
-  if (actu.audio.paused) {
-    if (!actu.audio.src) chargerPiste();
+  actu.precedent.addEventListener("click", function() {
+    pisteEnCours = (pisteEnCours - 1 + pistes.length) % pistes.length;
+    chargerPiste();
     actu.audio.play();
     actu.play.textContent = "⏸";
-  } else {
-    actu.audio.pause();
-    actu.play.textContent = "▶";
-  }
-});
+  });
 
-actu.suivant.addEventListener("click", function() {
-  pisteEnCours = (pisteEnCours + 1) % pistes.length;
+  actu.audio.addEventListener("timeupdate", function() {
+    if (!actu.audio.duration) return;
+    const pct = (actu.audio.currentTime / actu.audio.duration) * 100;
+    actu.barre.style.width = pct + "%";
+    const min = Math.floor(actu.audio.currentTime / 60);
+    const sec = Math.floor(actu.audio.currentTime % 60);
+    actu.actuel.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
+  });
+
+  actu.audio.addEventListener("loadedmetadata", function() {
+    const min = Math.floor(actu.audio.duration / 60);
+    const sec = Math.floor(actu.audio.duration % 60);
+    actu.total.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
+  });
+
+  actu.audio.addEventListener("ended", function() {
+    actu.suivant.click();
+  });
+
+  document.getElementById("actu-barre-container").addEventListener("click", function(e) {
+    if (!actu.audio.duration) return;
+    actu.audio.currentTime = (e.offsetX / this.offsetWidth) * actu.audio.duration;
+  });
+
   chargerPiste();
-  actu.audio.play();
-  actu.play.textContent = "⏸";
-});
 
-actu.precedent.addEventListener("click", function() {
-  pisteEnCours = (pisteEnCours - 1 + pistes.length) % pistes.length;
-  chargerPiste();
-  actu.audio.play();
-  actu.play.textContent = "⏸";
-});
-
-actu.audio.addEventListener("timeupdate", function() {
-  const pct = (actu.audio.currentTime / actu.audio.duration) * 100;
-  actu.barre.style.width = pct + "%";
-  const min = Math.floor(actu.audio.currentTime / 60);
-  const sec = Math.floor(actu.audio.currentTime % 60);
-  actu.actuel.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
-});
-
-actu.audio.addEventListener("loadedmetadata", function() {
-  const min = Math.floor(actu.audio.duration / 60);
-  const sec = Math.floor(actu.audio.duration % 60);
-  actu.total.textContent = min + ":" + (sec < 10 ? "0" : "") + sec;
-});
-
-actu.audio.addEventListener("ended", function() {
-  actu.suivant.click();
-});
-
-document.getElementById("actu-barre-container").addEventListener("click", function(e) {
-  actu.audio.currentTime = (e.offsetX / this.offsetWidth) * actu.audio.duration;
-});
-
-chargerPiste();
+  // Sauvegarde de la piste en cours avant de quitter la page
+  // (placé ici car "actu" et "pisteEnCours" n'existent qu'à l'intérieur de ce bloc)
+  window.addEventListener("beforeunload", function() {
+    try {
+      localStorage.setItem("mazette-piste", pisteEnCours);
+      localStorage.setItem("mazette-temps", actu.audio.currentTime);
+      localStorage.setItem("mazette-playing", actu.audio.paused);
+    } catch (e) { /* stockage indisponible : on ignore */ }
+  });
+}
 
 
 // =====================
 // LIGHTBOX GALERIE
 // =====================
-const photosGalerie  = Array.from(document.querySelectorAll(".grille-photos img"));
-const lightbox       = document.getElementById("lightbox");
-const lightboxImg    = document.getElementById("lightbox-img");
-const btnFermer      = document.getElementById("lightbox-fermer");
-const btnLbPrecedent = document.getElementById("lightbox-precedent");
-const btnLbSuivant   = document.getElementById("lightbox-suivant");
+const lightbox = document.getElementById("lightbox");
 
-let photoEnCours = 0;
+if (lightbox) {
 
-function desactiverPhotos() {
-  photosGalerie.forEach(function(photo) {
-    photo.style.pointerEvents = "none";
+  const photosGalerie  = Array.from(document.querySelectorAll(".grille-photos img"));
+  const lightboxImg    = document.getElementById("lightbox-img");
+  const btnFermer      = document.getElementById("lightbox-fermer");
+  const btnLbPrecedent = document.getElementById("lightbox-precedent");
+  const btnLbSuivant   = document.getElementById("lightbox-suivant");
+
+  let photoEnCours = 0;
+
+  function desactiverPhotos() {
+    photosGalerie.forEach(function(photo) {
+      photo.style.pointerEvents = "none";
+    });
+  }
+
+  function reactiverPhotos() {
+    photosGalerie.forEach(function(photo) {
+      photo.style.pointerEvents = "auto";
+    });
+  }
+
+  function afficherPhoto() {
+    lightboxImg.src = photosGalerie[photoEnCours].src;
+    lightboxImg.alt = photosGalerie[photoEnCours].alt;
+  }
+
+  function ouvrirLightbox(index) {
+    photoEnCours = index;
+    afficherPhoto();
+    lightbox.classList.remove("lightbox-cachee");
+    desactiverPhotos();
+  }
+
+  function fermerLightbox() {
+    lightbox.classList.add("lightbox-cachee");
+    setTimeout(reactiverPhotos, 400);
+  }
+
+  photosGalerie.forEach(function(photo, index) {
+    photo.addEventListener("click", function() {
+      ouvrirLightbox(index);
+    });
+  });
+
+  btnFermer.addEventListener("click", fermerLightbox);
+
+  btnLbSuivant.addEventListener("click", function(e) {
+    e.stopPropagation();
+    photoEnCours = (photoEnCours + 1) % photosGalerie.length;
+    afficherPhoto();
+  });
+
+  btnLbPrecedent.addEventListener("click", function(e) {
+    e.stopPropagation();
+    photoEnCours = (photoEnCours - 1 + photosGalerie.length) % photosGalerie.length;
+    afficherPhoto();
+  });
+
+  lightbox.addEventListener("click", function(e) {
+    if (e.target === lightbox) fermerLightbox();
+  });
+
+  document.addEventListener("keydown", function(e) {
+    if (lightbox.classList.contains("lightbox-cachee")) return;
+    if (e.key === "ArrowRight") btnLbSuivant.click();
+    if (e.key === "ArrowLeft")  btnLbPrecedent.click();
+    if (e.key === "Escape")     fermerLightbox();
   });
 }
-
-function reactiverPhotos() {
-  photosGalerie.forEach(function(photo) {
-    photo.style.pointerEvents = "auto";
-  });
-}
-
-function ouvrirLightbox(index) {
-  photoEnCours = index;
-  lightboxImg.src = photosGalerie[photoEnCours].src;
-  lightbox.classList.remove("lightbox-cachee");
-  desactiverPhotos();
-}
-
-function fermerLightbox() {
-  lightbox.classList.add("lightbox-cachee");
-  setTimeout(reactiverPhotos, 400);
-}
-
-photosGalerie.forEach(function(photo, index) {
-  photo.addEventListener("click", function() {
-    ouvrirLightbox(index);
-  });
-});
-
-btnFermer.addEventListener("click", fermerLightbox);
-
-btnLbSuivant.addEventListener("click", function(e) {
-  e.stopPropagation();
-  photoEnCours = (photoEnCours + 1) % photosGalerie.length;
-  lightboxImg.src = photosGalerie[photoEnCours].src;
-});
-
-btnLbPrecedent.addEventListener("click", function(e) {
-  e.stopPropagation();
-  photoEnCours = (photoEnCours - 1 + photosGalerie.length) % photosGalerie.length;
-  lightboxImg.src = photosGalerie[photoEnCours].src;
-});
-
-lightbox.addEventListener("click", function(e) {
-  if (e.target === lightbox) fermerLightbox();
-});
-
-document.addEventListener("keydown", function(e) {
-  if (lightbox.classList.contains("lightbox-cachee")) return;
-  if (e.key === "ArrowRight") btnLbSuivant.click();
-  if (e.key === "ArrowLeft")  btnLbPrecedent.click();
-  if (e.key === "Escape")     fermerLightbox();
-});
 
 
 // =====================
 // FORMULAIRE CONTACT
 // =====================
-const form    = document.getElementById("form-contact");
-const message = document.getElementById("message-formulaire");
+const form = document.getElementById("form-contact");
 
-message.style.display = "none";
+if (form) {
 
-form.addEventListener("submit", async function(e) {
-  e.preventDefault();
+  const messageFormulaire = document.getElementById("message-formulaire");
+  messageFormulaire.style.display = "none";
 
-  const data = new FormData(form);
+  form.addEventListener("submit", async function(e) {
+    e.preventDefault();
 
-  const response = await fetch(form.action, {
-    method: "POST",
-    body: data,
-    headers: { "Accept": "application/json" }
+    let envoiReussi = false;
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { "Accept": "application/json" }
+      });
+      envoiReussi = response.ok;
+    } catch (erreur) {
+      // pas de connexion : envoiReussi reste à false
+    }
+
+    if (envoiReussi) {
+      messageFormulaire.textContent = "✅ Merci ! Votre message a bien été envoyé.";
+      messageFormulaire.className   = "success";
+      form.reset();
+    } else {
+      messageFormulaire.textContent = "❌ Une erreur est survenue. Réessayez plus tard.";
+      messageFormulaire.className   = "error";
+    }
+
+    messageFormulaire.style.display = "block";
   });
 
-  if (response.ok) {
-    message.style.display = "block";
-    message.textContent   = "✅ Merci ! Votre message a bien été envoyé.";
-    message.className     = "success";
-    form.reset();
-  } else {
-    message.style.display = "block";
-    message.textContent   = "❌ Une erreur est survenue. Réessayez plus tard.";
-    message.className     = "error";
-  }
-});
+  // Resizer du textarea
+  const textarea = document.getElementById("message");
 
+  textarea.addEventListener("input", function() {
+    if (textarea.scrollHeight > textarea.clientHeight) {
+      textarea.classList.add("resizable");
+    } else {
+      textarea.classList.remove("resizable");
+    }
+  });
+}
 
-// =====================
-// RESIZER TEXTAREA
-// =====================
-const textarea = document.getElementById("message");
-
-textarea.addEventListener("input", function() {
-  // Vérifie si le contenu dépasse la hauteur visible
-  if (textarea.scrollHeight > textarea.clientHeight) {
-    textarea.classList.add("resizable");
-  } else {
-    textarea.classList.remove("resizable");
-  }
-});
 
 // =====================
 // ANIMATIONS AU SCROLL
@@ -309,16 +335,11 @@ const observateur = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  // threshold 0 : déclenche dès que l'élément entre à l'écran,
+  // même s'il est plus haut que la fenêtre (cas de la section Live)
+  { threshold: 0, rootMargin: "0px 0px -10% 0px" }
 );
 
 document.querySelectorAll(".apparait").forEach(function(el) {
   observateur.observe(el);
-});
-
-
-window.addEventListener("beforeunload", function() {
-  localStorage.setItem("mazette-piste", pisteEnCours);
-  localStorage.setItem("mazette-temps", actu.audio.currentTime);
-  localStorage.setItem("mazette-playing", actu.audio.paused);
 });

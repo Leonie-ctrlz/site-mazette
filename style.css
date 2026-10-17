@@ -333,6 +333,10 @@ section {
   padding: 4rem;
 }
 
+#bio i {
+  display: block;
+  margin-top: 2rem;
+}
 
 /* =====================
    HERO
@@ -1359,7 +1363,7 @@ footer {
 #mentions {
   max-width: 800px;
   margin: 0 auto;
-  padding: 6rem 2rem;
+  padding: 10rem 2rem 6rem;
 }
 
 #mentions h1 {
@@ -1567,6 +1571,9 @@ footer {
   /* Contact */
   #reseaux {
     justify-content: center;
+  }
+  #mentions {
+    padding: 6rem 1.5rem 4rem;
   }
 
   /* Pas d'animation au scroll sur mobile */

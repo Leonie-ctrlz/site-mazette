@@ -52,15 +52,15 @@ if (heroBtn) {
 // =====================
 
 const extraits = [
-    { numero: "01", titre: "Les Belles Choses", ambiance: "Rêve · Douceur",
+    { numero: "01", titre: "Les Belles Choses - Thème originale", ambiance: "Rêve · Douceur",
         fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792158179/Mazette_LES_BELLES_CHOSES_144bpm_Em_30sec.wav" },
     { numero: "02", titre: "Extrait FILM TENSION", ambiance: "Horreur · Tension",
         fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792159942/MUSIQUE_FILM_TENSION.mp3" },
     { numero: "03", titre: "Extrait FILM EMOTION", ambiance: "Tristesse · Mélancolie",
         fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792160441/MUSIQUE_FILM_EMOTION.mp3" },
-    { numero: "04", titre: "Extrait TERROR 127bpm", ambiance: "Tension · Sombre · Techno",
+    { numero: "04", titre: "Extrait FILM TERREUR", ambiance: "Tension · Sombre · Techno",
         fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792160541/Mazette_Terror_127bpm_D.mp3" },
-    { numero: "05", titre: "RévélationBeatz 91bpm", ambiance: "Hybride · Epic · Orchestral",
+    { numero: "05", titre: "Extrait FILM EPIQUE", ambiance: "Hybrid · Epic · Orchestral",
         fichier: "https://res.cloudinary.com/jyllfp1b/video/upload/v1792160646/Mazette_RevelationBeatz_91bpm_Cm.wav" },
 ];
 
