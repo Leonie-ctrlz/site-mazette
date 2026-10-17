@@ -853,6 +853,27 @@ body.page-image::before {
     display: none;
 }
 
+/* =====================
+   CONTACT DÉDIÉ
+===================== */
+#contact-image {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+    text-align: center;
+}
+
+#contact-image h2 {
+    margin-bottom: 1rem;
+}
+
+#contact-image p {
+    margin-bottom: 2rem;
+    opacity: 0.85;
+}
+
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .carte-projet {

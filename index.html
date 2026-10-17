@@ -462,65 +462,83 @@
 
   <!-- CONTACT -->
   <section id="contact">
-    <h2>Contact</h2>
-    <p>Pour toute demande de booking, collaboration ou presse.</p>
+    <div id="contact-carte">
 
-    <div id="reseaux">
-      <a href="https://www.instagram.com/mazettebeatmaker" target="_blank" rel="noopener" class="lien-reseau">Instagram</a>
-      <a href="https://www.facebook.com/mazettemusic" target="_blank" rel="noopener" class="lien-reseau">Facebook</a>
-      <a href="https://www.youtube.com/@mazetteofficiel6361" target="_blank" rel="noopener" class="lien-reseau">Youtube</a>
-      <a href="https://soundcloud.com/mazette" target="_blank" rel="noopener" class="lien-reseau">SoundCloud</a>
-      <a href="https://mazettemusic.bandcamp.com" target="_blank" rel="noopener" class="lien-reseau">Bandcamp</a>
-      <a href="https://open.spotify.com/artist/7457KWb8EKaQYKLfnTxAMB" target="_blank" rel="noopener" class="lien-reseau">Spotify</a>
+      <!-- Colonne gauche : présentation + réseaux -->
+      <div id="contact-intro">
+        <h2>Contact</h2>
+        <p>Pour toute demande de booking, collaboration ou presse.</p>
+
+        <div id="reseaux">
+          <a href="https://www.instagram.com/mazettebeatmaker" target="_blank" rel="noopener" class="lien-reseau">Instagram</a>
+          <a href="https://www.facebook.com/mazettemusic" target="_blank" rel="noopener" class="lien-reseau">Facebook</a>
+          <a href="https://www.youtube.com/@mazetteofficiel6361" target="_blank" rel="noopener" class="lien-reseau">YouTube</a>
+          <a href="https://soundcloud.com/mazette" target="_blank" rel="noopener" class="lien-reseau">SoundCloud</a>
+          <a href="https://mazettemusic.bandcamp.com" target="_blank" rel="noopener" class="lien-reseau">Bandcamp</a>
+          <a href="https://open.spotify.com/artist/7457KWb8EKaQYKLfnTxAMB" target="_blank" rel="noopener" class="lien-reseau">Spotify</a>
+        </div>
+      </div>
+      <!-- Colonne droite : formulaire -->
+      <form id="form-contact" action="https://formspree.io/f/xgogdnee" method="POST">
+
+        <div class="champ">
+          <label for="nom">Nom</label>
+          <input required type="text" id="nom" name="nom" placeholder="Votre nom">
+        </div>
+
+        <div class="champ">
+          <label for="email">Email</label>
+          <input required type="email" id="email" name="email" placeholder="exemple@email.com">
+        </div>
+
+        <div class="champ">
+          <label for="sujet">Sujet</label>
+          <select id="sujet" name="sujet">
+            <option value="">-- Choisir --</option>
+            <option value="booking">Booking / Live</option>
+            <option value="collab">Collaboration</option>
+            <option value="presse">Presse</option>
+            <option value="autre">Autre</option>
+          </select>
+        </div>
+
+        <div class="champ">
+          <label for="message">Message</label>
+          <textarea required id="message" name="message" rows="5" placeholder="Votre message..."></textarea>
+        </div>
+
+        <input type="text" name="_gotcha" class="champ-cache" aria-label="Ne pas remplir" tabindex="-1">
+        <input type="hidden" name="_subject" value="Nouveau message depuis le site MAZETTE">
+
+        <p class="form-info">Vos données servent uniquement à répondre à votre message.
+          <a href="mentions-legales.html#confidentialite">En savoir plus</a></p>
+
+        <button type="submit" id="btn-envoyer">Envoyer</button>
+        <p id="message-formulaire"></p>
+
+      </form>
+
     </div>
-
-    <form id="form-contact" action="https://formspree.io/f/xgogdnee" method="POST">
-
-      <div class="champ">
-        <label for="nom">Nom</label>
-        <input required type="text" id="nom" name="nom" placeholder="Votre nom">
-      </div>
-
-      <div class="champ">
-        <label for="email">Email</label>
-        <input required type="email" id="email" name="email" placeholder="exemple@email.com">
-      </div>
-
-      <div class="champ">
-        <label for="sujet">Sujet</label>
-        <select id="sujet" name="sujet">
-          <option value="">-- Choisir --</option>
-          <option value="booking">Booking / Live</option>
-          <option value="collab">Collaboration</option>
-          <option value="presse">Presse</option>
-          <option value="autre">Autre</option>
-        </select>
-      </div>
-
-      <div class="champ">
-        <label for="message">Message</label>
-        <textarea id="message" name="message" rows="5" placeholder="Votre message..."></textarea>
-      </div>
-
-      <input type="text" name="_gotcha" class="champ-cache" aria-label="Ne pas remplir" tabindex="-1">
-      <input type="hidden" name="_subject" value="Nouveau message depuis le site MAZETTE">
-      <p class="form-info">Vos données servent uniquement à répondre à votre message.
-        <a href="mentions-legales.html#confidentialite">En savoir plus</a></p>
-      <button type="submit" id="btn-envoyer">Envoyer</button>
-      <p id="message-formulaire"></p>
-
-    </form>
   </section>
 </main>
 
 <footer>
-    <p>© 2026 Mazette</p>
-    <nav class="footer-nav">
-      <a href="mentions-legales.html">Mentions légales</a>
-      <a href="mentions-legales.html#confidentialite">Confidentialité</a>
-      <a href="index.html#contact">Contact</a>
-    </nav>
-    <p class="footer-credit">Site conçu & développé par Léonie R.</p>
+  <div class="footer-reseaux">
+    <a href="https://www.instagram.com/mazettebeatmaker" target="_blank" rel="noopener"
+       class="icone-reseau icone-instagram" aria-label="Instagram de Mazette"></a>
+    <a href="https://open.spotify.com/artist/7457KWb8EKaQYKLfnTxAMB" target="_blank" rel="noopener"
+       class="icone-reseau icone-spotify" aria-label="Spotify de Mazette"></a>
+    <a href="https://mazettemusic.bandcamp.com" target="_blank" rel="noopener"
+       class="icone-reseau icone-bandcamp" aria-label="Bandcamp de Mazette"></a>
+  </div>
+
+  <p>© 2026 Mazette</p>
+  <nav class="footer-nav">
+    <a href="mentions-legales.html">Mentions légales</a>
+    <a href="mentions-legales.html#confidentialite">Confidentialité</a>
+    <a href="index.html#contact">Contact</a>
+  </nav>
+  <p class="footer-credit">Site conçu &amp; développé par Léonie R.</p>
 </footer>
   <script src="index.js"></script>
 </body>
