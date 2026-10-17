@@ -338,6 +338,10 @@ section {
   margin-top: 2rem;
 }
 
+#bio a {
+  color: var(--couleur-accent);
+}
+
 /* =====================
    HERO
 ===================== */
@@ -1142,6 +1146,52 @@ section {
 
 
 /* =====================
+   TEASER MUSIQUE À L'IMAGE
+===================== */
+#teaser-image {
+  max-width: 800px;
+  text-align: center;
+  border-top: 1px solid rgba(201, 168, 76, 0.3);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.teaser-surtitre {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--couleur-accent);
+  margin-bottom: 0.5rem;
+}
+
+#teaser-image h2 {
+  margin-bottom: 1rem;
+}
+
+#teaser-image p:not(.teaser-surtitre) {
+  margin-bottom: 2rem;
+  opacity: 0.85;
+}
+
+.btn-teaser {
+  display: inline-block;
+  padding: 0.9rem 2rem;
+  border: 2px solid var(--couleur-accent);
+  color: var(--couleur-accent);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-teaser:hover {
+  background: var(--couleur-accent);
+  color: var(--couleur-fond);
+}
+
+
+/* =====================
    CONTACT
 ===================== */
 #contact p {
@@ -1520,9 +1570,14 @@ footer {
     padding: 1rem 0 2rem;
   }
 
-  #actu-desc,
+  /* Description visible, citation de l'artiste masquée */
   #actu-gauche i {
     display: none;
+  }
+
+  #actu-desc {
+    font-size: 0.9rem;
+    max-width: 100%;
   }
 
   /* Sections */
@@ -1550,22 +1605,86 @@ footer {
     padding: 1rem;
   }
 
-  /* Discographie */
+  /* Discographie : 2 colonnes */
   .grille-disques {
-    grid-template-columns: repeat(auto-fill, minmax(min(150px, 100%), 1fr));
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
-  /* Timeline */
+  .carte-album .infos {
+    padding: 0.6rem;
+  }
+
+  .carte-album img {
+    margin-bottom: 0.5rem;
+  }
+
+  .carte-album h3 {
+    font-size: 1rem;
+  }
+
+  .carte-album span {
+    font-size: 0.7rem;
+  }
+
+  /* Timeline compacte */
   .timeline {
     --retrait: 25px;
   }
 
+  /* Timeline repliée : seul le premier événement est visible */
+  .timeline:not(.ouverte) .evenement:not(:first-child) {
+    display: none;
+  }
+
+  /* Le premier encadré devient cliquable */
+  .timeline .evenement:first-child .contenu {
+    cursor: pointer;
+  }
+
+  /* Indication sous le premier événement */
+  .timeline .evenement:first-child .contenu::after {
+    content: "Voir toutes les dates ▾";
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--couleur-accent);
+  }
+
+  .timeline.ouverte .evenement:first-child .contenu::after {
+    content: "Masquer ▴";
+  }
+
+  .evenement {
+    margin-bottom: 1rem;
+  }
+
+  .evenement::before {
+    width: 11px;
+    height: 11px;
+    top: 6px;
+    left: calc(6px - var(--retrait));   /* reste centré sur la ligne */
+  }
+
   .annee {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    margin-bottom: 0;
+  }
+
+  .contenu {
+    padding: 0.6rem 0.9rem;
+    border-width: 2px;
   }
 
   .contenu h3 {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+  }
+
+  .contenu p {
+    font-size: 0.85rem;
   }
 
   /* Contact */
@@ -1589,16 +1708,23 @@ footer {
 @media (max-width: 600px) {
 
   #actu-lecteur {
-    flex-direction: column;
-    align-items: center;
+    flex-direction: row;       /* pochette à gauche, contrôles à droite */
+    align-items: flex-start;
+    padding: 0.8rem;
+    gap: 0.8rem;
   }
 
   #actu-pochette {
-    width: 100%;
-    max-width: 260px;
+    width: 90px;
+    max-width: none;
   }
 
-  #actu-lecteur-contenu {
-    width: 100%;
+  #actu-tracklist {
+    max-height: 90px;          /* liste scrollable, plus courte */
+  }
+
+  #actu-boutons button {
+    width: 36px;               /* plus facile à toucher au doigt */
+    height: 36px;
   }
 }

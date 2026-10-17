@@ -320,7 +320,7 @@ if (form) {
 // ANIMATIONS AU SCROLL
 // =====================
 document.querySelectorAll(
-  "#bio, #musique, #galerie, #live, #contact, " +
+  "#bio, #musique, #galerie, #live, #teaser-image, #contact, " +
   ".carte-album, .carte-video, .evenement"
 ).forEach(function(el) {
   el.classList.add("apparait");
@@ -343,3 +343,32 @@ const observateur = new IntersectionObserver(
 document.querySelectorAll(".apparait").forEach(function(el) {
   observateur.observe(el);
 });
+
+
+// =====================
+// TIMELINE REPLIABLE (mobile)
+// =====================
+const timeline = document.querySelector(".timeline");
+
+if (timeline) {
+  const premierEncadre = timeline.querySelector(".evenement:first-child .contenu");
+
+  // Accessible au clavier et aux lecteurs d'écran
+  premierEncadre.setAttribute("role", "button");
+  premierEncadre.setAttribute("tabindex", "0");
+  premierEncadre.setAttribute("aria-expanded", "false");
+
+  function basculerTimeline() {
+    const ouverte = timeline.classList.toggle("ouverte");
+    premierEncadre.setAttribute("aria-expanded", ouverte);
+  }
+
+  premierEncadre.addEventListener("click", basculerTimeline);
+
+  premierEncadre.addEventListener("keydown", function(e) {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      basculerTimeline();
+    }
+  });
+}
