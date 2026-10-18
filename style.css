@@ -10,6 +10,7 @@
   --police-titre: 'Cormorant Garamond', serif;
   --police-titre-h2: 'Bebas Neue', sans-serif;
   --police-texte: 'Inter', sans-serif;
+  --voile: rgba(10, 10, 10, 0.55);
 }
 
 /* =====================
@@ -40,8 +41,10 @@ body::before {
   position: fixed;
   inset: 0;
   z-index: -1;
-  background: url("https://res.cloudinary.com/jyllfp1b/image/upload/v1786628283/fond2.jpg")
-              center 20% / cover no-repeat;
+  background:
+        linear-gradient(var(--voile), var(--voile)),
+        url("https://res.cloudinary.com/jyllfp1b/image/upload/f_auto,q_auto,w_1920/v1786628283/fond2.jpg")
+        center 20% / cover no-repeat;
 }
 
 img,
@@ -469,8 +472,8 @@ section {
 #actu-lecteur {
   display: flex;
   gap: 1rem;
-  background: rgb(85 157 174);
-  border: 1px solid #edab6a;
+  background: rgb(53 103 101 / 0.75);
+  border: 1px solid rgba(201, 168, 76, 0.4);
   border-radius: 4px;
   padding: 1rem;
 }
@@ -788,7 +791,7 @@ section {
 }
 
 .carte-album {
-  background-color: var(--couleur-secondaire);
+  background-color: rgba(10, 10, 10, 0.8);
   border: 2px solid #2a2a2a;
   border-radius: 2px;
   transition: transform 0.3s ease, border-color 0.3s ease;
@@ -814,8 +817,8 @@ section {
 .carte-album span {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1rem;
-  color: var(--couleur-texte);
-  opacity: 0.6;
+  color: #c8c4bc;
+  opacity: 1;
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
@@ -1120,9 +1123,9 @@ section {
 }
 
 .contenu {
-  background-color: var(--couleur-tertiaire);
-  border: 3px solid var(--couleur-accent);
-  opacity: 0.8;
+  background: rgba(10, 10, 10, 0.75);
+  border: 1px solid rgba(201, 168, 76, 0.4);
+  border-left: 3px solid var(--couleur-accent);
   padding: 1.2rem 1.5rem;
   transition: .3s;
 }
@@ -1141,7 +1144,6 @@ section {
 
 .contenu p {
   color: var(--couleur-texte);
-  opacity: .8;
 }
 
 
@@ -1191,9 +1193,6 @@ section {
 }
 
 
-/* =====================
-   CONTACT
-===================== */
 /* =====================
    CONTACT
 ===================== */
@@ -1298,7 +1297,8 @@ section {
 /* Petite mention RGPD */
 #contact .form-info {
   font-size: 0.8rem;
-  opacity: 0.6;
+  color: #c8c4bc;
+  opacity: 1;
   margin: 0;
 }
 
@@ -1468,13 +1468,14 @@ footer {
 .footer-credit {
   margin-top: 1rem;
   font-size: 0.75rem;
-  opacity: 0.6;
+  color: #a39f97;
   font-style: italic;
   text-align: center;
 }
 
 footer > p {
-  opacity: 0.5;
+  opacity: 1;
+  color: #a39f97;
 }
 
 
@@ -1620,6 +1621,9 @@ footer > p {
 
 /* ---------- MOBILE (≤ 768px) ---------- */
 @media (max-width: 768px) {
+  :root {
+    --voile: rgba(10, 10, 10, 0.72);
+  }
 
   /* Header */
   #header-principal {
@@ -1702,6 +1706,9 @@ footer > p {
     font-size: 0.7rem;
   }
 
+  #live-texte-colonnes {
+    text-align: left;
+  }
   /* Timeline compacte */
   .timeline {
     --retrait: 25px;
