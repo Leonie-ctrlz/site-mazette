@@ -637,9 +637,8 @@ body.page-image::before {
 /* BLOC AWARD */
 .apropos-award {
     display: flex;
-    flex-direction: row;
-    gap: 3rem;
-    align-items: center;
+    flex-direction: column;  /* ← colonne au lieu de row */
+    gap: 2rem;
 }
 
 .award-contenu {
@@ -668,9 +667,25 @@ body.page-image::before {
     font-style: italic;
 }
 
+.award-lien {
+    display: inline-block;
+    margin-top: 1rem;
+    color: var(--couleur-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    border-bottom: 1px solid var(--couleur-accent);
+    padding-bottom: 2px;
+    transition: opacity 0.3s ease;
+}
+
+.award-lien:hover {
+    opacity: 0.7;
+}
+
 .award-visuel {
-    flex-shrink: 0;
-    width: 300px;
+    width: 100%;      /* ← pleine largeur */
+    margin-top: 2rem;
 }
 
 .award-visuel img {
